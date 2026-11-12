@@ -1,21 +1,1119 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mening saytim</title>
-  <style>
-    body { margin:0; font-family:sans-serif; background:#0f172a; color:#fff;
-           display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; }
-    h1 { color:#38bdf8; }
-    a { color:#fff; background:#0ea5e9; padding:12px 24px; border-radius:10px; text-decoration:none; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Afrika materigi — taqdimot</title>
+<style>
+:root{--night:#140b07;--sand:#f6c76e;--sun:#ff8a3d;--gold:#ffd36b;--leaf:#6ed37a;--river:#4fc3ff;--ink:#fff7ea;--mute:#ecdcc4}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:50% 50%;overflow:hidden;background:var(--night)}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .8s,transform .8s,visibility 0s .8s;background:radial-gradient(120% 80% at 50% 0%,#4a2612 0%,#25130a 45%,var(--night) 100%)}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .8s,transform .8s,visibility 0s}
+.slide.prev{transform:translateX(-60px)}
+.vid{position:relative;height:340px;overflow:hidden;flex:none;border-bottom:3px solid rgba(255,211,107,.4)}
+.vid img.kb{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;animation:kb 18s ease-in-out infinite alternate}
+.vid img.kb2{animation-name:kb2}
+@keyframes kb{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.18) translate(-4%,-3%)}}
+@keyframes kb2{0%{transform:scale(1.15) translate(-3%,2%)}100%{transform:scale(1) translate(3%,-2%)}}
+.vid::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,11,7,.92) 0%,rgba(20,11,7,.55) 35%,rgba(0,0,0,0) 65%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(20,11,7,.9) 100%);pointer-events:none}
+.tag{position:absolute;z-index:5;top:20px;right:24px;font-size:17px;font-weight:700;letter-spacing:1.5px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);padding:7px 16px;border-radius:30px;display:flex;gap:9px;align-items:center}
+.tag i{width:11px;height:11px;border-radius:50%;background:#ff3b3b;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.2}}
+.vtitle{position:absolute;z-index:5;left:60px;bottom:40px;max-width:1000px}
+.vtitle small{display:block;color:var(--gold);font-size:22px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px}
+.vtitle h2{font-size:76px;line-height:1.02;text-shadow:0 4px 18px rgba(0,0,0,.8)}
+.cloud{position:absolute;z-index:2;top:8%;width:300px;height:70px;background:rgba(255,255,255,.55);border-radius:60px;filter:blur(16px);animation:drift 30s linear infinite}
+.cloud.c2{top:24%;width:200px;animation-duration:40s;animation-delay:-16s;opacity:.7}
+@keyframes drift{from{left:-320px}to{left:110%}}
+.birds{position:absolute;z-index:3;top:16%;left:-120px;animation:fly 18s linear infinite}
+.birds.b2{top:30%;animation-duration:24s;animation-delay:-9s}
+@keyframes fly{from{left:-120px}to{left:105%}}
+.bird{display:inline-block;width:28px;height:12px;margin:0 7px;border-top:3px solid #1a1a1a;border-radius:50% 50% 0 0;animation:flap .5s ease-in-out infinite alternate}
+.bird:nth-child(2){animation-delay:.2s;transform:translateY(8px)}
+.bird:nth-child(3){animation-delay:.35s}
+@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(-.6)}}
+.rain{position:absolute;inset:0;z-index:3;background-image:repeating-linear-gradient(105deg,rgba(255,255,255,0) 0 14px,rgba(200,230,255,.35) 14px 15px);background-size:70px 70px;animation:rain .5s linear infinite;mix-blend-mode:screen}
+@keyframes rain{to{background-position:-20px 70px}}
+.rays{position:absolute;z-index:2;top:-60%;left:60%;width:140%;height:220%;background:conic-gradient(from 200deg,transparent 0 10deg,rgba(255,220,150,.18) 12deg,transparent 16deg,transparent 26deg,rgba(255,220,150,.14) 29deg,transparent 33deg,transparent 360deg);animation:rot 30s linear infinite;transform-origin:0 50%}
+@keyframes rot{to{transform:rotate(25deg)}}
+.body{flex:1;padding:30px 60px 34px;overflow:hidden;display:flex;flex-direction:column;gap:22px;min-height:0}
+.row{display:grid;gap:24px;flex:1;min-height:0}
+.col{display:flex;flex-direction:column;gap:20px;min-height:0}
+.lead{color:var(--mute);font-size:25px;line-height:1.45}
+.lead b{color:var(--gold)}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,211,107,.25);border-radius:22px;padding:20px 24px}
+.stat .n{font-family:Georgia,serif;font-size:58px;font-weight:700;color:var(--gold);line-height:1}
+.stat .u{font-size:22px;color:var(--sand);margin-left:6px}
+.stat p{font-size:20px;color:var(--mute);margin-top:8px}
+.rec{display:flex;gap:16px;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.13);font-size:22px;line-height:1.3}
+.rec:last-child{border:0}
+.rec .e{font-size:32px;flex:none;width:44px;text-align:center}
+.rec b{color:#fff}
+h3{color:var(--gold);font-size:30px;margin-bottom:10px}
+.rise{opacity:0;transform:translateY(30px)}
+.active .rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes rise{to{opacity:1;transform:none}}
+#nav{position:fixed;z-index:50;right:18px;bottom:18px;display:flex;gap:8px;align-items:center;background:rgba(20,11,7,.8);border:1px solid rgba(255,211,107,.3);padding:6px;border-radius:40px;opacity:.25;transition:opacity .3s}
+#nav:hover,#nav:focus-within{opacity:1}
+#nav button{border:0;background:rgba(255,255,255,.1);color:var(--ink);width:42px;height:42px;border-radius:50%;font-size:17px;cursor:pointer}
+#count{font-size:14px;min-width:50px;text-align:center;font-weight:700;color:var(--gold)}
+#bar{position:fixed;z-index:50;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--sun),var(--gold));transition:width .5s}
+#fw{position:fixed;inset:0;z-index:40;pointer-events:none;width:100%;height:100%}
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:280px 80px 210px;position:relative;overflow:hidden}
+.sunball{position:absolute;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,#ffd36b 0%,#ff8a3d 45%,rgba(255,90,40,0) 70%);bottom:-300px;left:50%;transform:translateX(-50%);animation:pulse 5s ease-in-out infinite;opacity:.85}
+@keyframes pulse{50%{transform:translateX(-50%) scale(1.06)}}
+.hero h1{position:relative;font-size:150px;white-space:nowrap;line-height:.92;background:linear-gradient(180deg,#fff6d9,#ffd36b 50%,#ff8a3d);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 8px 24px rgba(0,0,0,.6))}
+.hero .sub{position:relative;margin-top:22px;font-size:32px;color:var(--ink);max-width:1300px}
+.chip{position:relative;display:inline-block;margin-bottom:14px;font-size:22px;letter-spacing:5px;font-weight:700;color:#2a160c;background:var(--gold);padding:9px 26px;border-radius:40px}
+.ground{position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(180deg,#3b220f,#1a0e07)}
+.parade{position:absolute;left:0;right:0;bottom:100px;height:140px;pointer-events:none}
+.walker{position:absolute;bottom:0;left:100%;font-size:var(--s,90px);animation:walk var(--t,24s) linear infinite;animation-delay:var(--dl,0s);white-space:nowrap}
+.walker span{display:inline-block;animation:bob .5s ease-in-out infinite alternate}
+.walker em{display:block;font-style:normal;font-size:20px;text-align:center;color:var(--gold);font-weight:700;margin-top:-8px;text-shadow:0 1px 4px #000}
+@keyframes walk{from{left:105%}to{left:-12%}}
+@keyframes bob{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-9px) rotate(2deg)}}
+.go{position:relative;margin-top:34px;border:0;background:linear-gradient(90deg,var(--sun),var(--gold));color:#2a160c;font-weight:800;font-size:28px;padding:18px 48px;border-radius:50px;box-shadow:0 10px 40px rgba(255,138,61,.5);cursor:pointer}
+.mapbox{padding:10px;display:flex;align-items:center;justify-content:center;height:100%}
+svg.map{height:100%;width:auto;max-width:100%;display:block}
+.land2{fill:url(#landg);stroke:#ffd36b;stroke-width:1.2}
+.gridl{stroke:rgba(255,255,255,.18);stroke-width:1}
+.eq{stroke:#ff5252;stroke-width:2.5}
+.trop{stroke:#fff;stroke-width:1.8;stroke-dasharray:6 5}
+.mer{stroke:#4caf50;stroke-width:2.5}
+.ptl{font:700 17px system-ui;fill:#fff;paint-order:stroke;stroke:#140b07;stroke-width:4px}
+.ptl.s{font-size:14px;font-weight:600;fill:#ffe9b8}
+.dot{fill:#ff3b3b;stroke:#fff;stroke-width:2}
+.ring{fill:none;stroke:#ff3b3b;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 1.8s ease-out infinite}
+@keyframes ring{from{transform:scale(.4);opacity:1}to{transform:scale(3);opacity:0}}
+.riv{fill:none;stroke:var(--river);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 4px rgba(79,195,255,.8))}
+.active .riv{animation:draw 3s ease-out forwards;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.lake{fill:#4fc3ff;stroke:#bdeaff;stroke-width:1}
+.flow{fill:none;stroke:#fff;stroke-width:1.6;stroke-dasharray:.02 .08;stroke-linecap:round;opacity:0;animation:flow 2.5s linear infinite}
+.active .flow{opacity:.85;transition:opacity 1s 3s}
+@keyframes flow{to{stroke-dashoffset:-.1}}
+.lenrow{display:flex;align-items:center;gap:16px;margin:12px 0;font-size:23px}
+.lenrow b{width:120px;flex:none}
+.lenbar{flex:1;height:22px;background:rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
+.lenbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1e88e5,var(--river));border-radius:12px;transition:width 2s cubic-bezier(.2,.8,.2,1)}
+.lenrow span{width:130px;text-align:right;color:var(--river);font-weight:700}
+.tl{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;flex:1;min-height:0;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:105px;height:4px;background:linear-gradient(90deg,var(--gold),var(--sun));border-radius:3px}
+.per{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.ph{flex:none;width:210px;height:210px;border-radius:50%;overflow:hidden;border:4px solid var(--gold);animation:glow 2.4s infinite;background:#3a2414;display:flex;align-items:center;justify-content:center;font-size:96px;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:top}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(255,211,107,.6)}70%{box-shadow:0 0 0 16px rgba(255,211,107,0)}}
+.per .yr{font-size:20px;font-weight:800;color:#2a160c;background:var(--gold);padding:3px 12px;border-radius:12px;display:inline-block;margin:12px 0 6px}
+.per h4{font-size:28px;margin-bottom:6px}
+.per p{font-size:20px;color:var(--mute);line-height:1.38}
+.photo{border-radius:20px;overflow:hidden;position:relative;border:1px solid rgba(255,211,107,.3);min-height:0;flex:1}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;animation:kb 14s ease-in-out infinite alternate}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:20px;font-weight:700}
+.blocks{display:flex;justify-content:center;gap:6px;height:220px;align-items:flex-end;margin:10px 0 12px}
+.blk{width:18%;background:linear-gradient(180deg,#6ed37a 0 14%,#8d5a2b 14% 46%,#5c3a1c 46% 72%,#3d2715 72%);border-radius:4px 4px 0 0;height:130px}
+.active .blk.up{animation:up 3s ease-in-out infinite alternate}
+.active .blk.dn{animation:dn 3s ease-in-out infinite alternate}
+@keyframes up{to{height:210px}}
+@keyframes dn{to{height:60px}}
+.blklab{display:flex;justify-content:space-around;font-size:20px;color:var(--gold);font-weight:700}
+.peaks{display:flex;align-items:flex-end;gap:12px;height:330px;padding-top:30px;border-bottom:3px solid var(--sand)}
+.pk{flex:1;position:relative;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.pk .tri{width:100%;height:0;background:linear-gradient(180deg,#fff 0 12%,#9c6b3a 13%,#5c3a1c);clip-path:polygon(50% 0,100% 100%,0 100%);transition:height 2s cubic-bezier(.2,.8,.2,1)}
+.pk .v{font-size:19px;font-weight:800;color:var(--gold);margin-bottom:4px}
+.pk .nm{position:absolute;bottom:-50px;font-size:17px;text-align:center;line-height:1.15;width:130%}
+.below{display:flex;gap:14px;margin-top:66px}
+.below .card{flex:1;text-align:center;padding:14px}
+.below .n{color:#4fc3ff;font-size:44px}
+.mins{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;flex:1}
+.min{text-align:center;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.min .e{font-size:76px;display:inline-block;animation:spin 4s ease-in-out infinite}
+@keyframes spin{50%{transform:rotateY(180deg) scale(1.1)}}
+.min h4{font-size:28px;margin:6px 0}
+.min p{font-size:19px;color:var(--mute)}
+.min::after{content:"";position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(20deg);animation:shine 3.5s infinite;animation-delay:var(--d,0s)}
+@keyframes shine{to{left:160%}}
+.zoo{display:grid;gap:14px;flex:1;min-height:0}
+.an{background:radial-gradient(circle at 50% 30%,rgba(255,211,107,.18),rgba(255,255,255,.03));border:1px solid rgba(255,211,107,.25);border-radius:20px;padding:10px 8px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .3s,border-color .3s}
+.an:hover,.an.open{transform:scale(1.05);border-color:var(--gold)}
+.an .e{font-size:66px;display:inline-block;line-height:1.1}
+.an h4{font-size:22px;margin-top:4px}
+.an p{font-size:15.5px;color:var(--mute);line-height:1.3;margin-top:4px}
+.m1{animation:a1 1.6s ease-in-out infinite}
+.m2{animation:a2 2.2s ease-in-out infinite;transform-origin:50% 100%}
+.m3{animation:a3 .7s ease-in-out infinite alternate}
+.m4{animation:a4 3s ease-in-out infinite}
+.m5{animation:a5 2s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes a1{0%,100%{transform:scale(1)}40%{transform:scale(1.15) rotate(-4deg)}50%{transform:scale(1.2)}}
+@keyframes a2{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes a3{from{transform:translate(-6px,0)}to{transform:translate(6px,-6px)}}
+@keyframes a4{0%,100%{transform:translateX(-12px) scaleX(1)}49%{transform:translateX(12px) scaleX(1)}50%{transform:translateX(12px) scaleX(-1)}99%{transform:translateX(-12px) scaleX(-1)}}
+@keyframes a5{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.12) translateY(-3px)}}
+.plg{display:grid;grid-template-columns:1fr 1fr;gap:4px 26px}
+.pl{display:flex;gap:14px;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+.pl .e{font-size:44px;animation:sway 3s ease-in-out infinite;transform-origin:50% 100%;display:inline-block;flex:none}
+@keyframes sway{50%{transform:rotate(6deg)}}
+.pl h4{font-size:22px}
+.pl p{font-size:17px;color:var(--mute);line-height:1.3}
+.desert{position:absolute;inset:0;animation:sky 14s ease-in-out infinite;background:linear-gradient(180deg,#ff9f43,#ffe0a3 60%)}
+@keyframes sky{0%,40%{background:linear-gradient(180deg,#ff9f43,#ffe0a3 60%)}55%,90%{background:linear-gradient(180deg,#07101f,#1b2a4a 60%)}100%{background:linear-gradient(180deg,#ff9f43,#ffe0a3 60%)}}
+.sunm{position:absolute;width:110px;height:110px;border-radius:50%;left:62%;top:16%;background:#fff3b0;box-shadow:0 0 70px 30px rgba(255,220,120,.7);animation:sunm 14s ease-in-out infinite}
+@keyframes sunm{0%,40%{background:#fff3b0;box-shadow:0 0 70px 30px rgba(255,220,120,.7)}55%,90%{background:#e8eefc;box-shadow:0 0 40px 8px rgba(200,220,255,.5)}}
+.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 30% 10%,#fff,transparent),radial-gradient(2px 2px at 50% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 80% 15%,#fff,transparent),radial-gradient(2px 2px at 90% 35%,#fff,transparent),radial-gradient(1.5px 1.5px at 20% 40%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 45%,#fff,transparent);animation:stars 14s ease-in-out infinite;opacity:0}
+@keyframes stars{0%,45%{opacity:0}55%,88%{opacity:1}100%{opacity:0}}
+.dune{position:absolute;left:-10%;width:120%;border-radius:50% 50% 0 0}
+.d1{bottom:-60px;height:170px;background:#e09a45}
+.d2{bottom:-90px;height:180px;left:30%;background:#c97c2e}
+.temp{position:absolute;z-index:6;right:30px;top:80px;font:800 44px Georgia,serif;color:#fff;text-shadow:0 2px 10px #000}
+.temp:before{content:"☀️ +45°C";animation:tmp 14s infinite}
+@keyframes tmp{0%,45%{content:"☀️ +45°C"}50%,90%{content:"🌙 0°C"}}
+.camel{position:absolute;bottom:40px;font-size:80px;animation:walk 26s linear infinite;z-index:3}
+.camel span{display:inline-block;animation:bob .6s ease-in-out infinite alternate}
+.qz{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1}
+.q{cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:16px 24px}
+.q h4{font-size:25px}
+.q .a{max-height:0;overflow:hidden;color:var(--leaf);font-weight:700;font-size:22px;transition:max-height .5s,margin .5s}
+.q.open .a{max-height:80px;margin-top:8px}
+.hint{font-size:19px;color:var(--sand);opacity:.85}
+.final h1{font-size:120px}
+.author{position:relative;margin-top:22px;padding:22px 50px;border-radius:26px;background:rgba(0,0,0,.45);border:3px solid var(--gold);box-shadow:0 0 50px rgba(255,211,107,.35)}
+.author small{display:block;letter-spacing:6px;font-size:22px;color:var(--sand);font-weight:700}
+.author b{display:block;font-family:Georgia,serif;font-size:72px;color:var(--gold);margin-top:6px}
+
+.vid{cursor:zoom-in}
+.vthumb{position:absolute;z-index:8;top:22px;left:50%;transform:translateX(-50%);width:400px;height:225px;border-radius:18px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 0 0 rgba(255,211,107,.6);animation:thumbglow 2.6s infinite;background:#000;cursor:zoom-in;transition:transform .35s}
+.vthumb:hover{transform:translateX(-50%) scale(1.05)}
+@keyframes thumbglow{70%{box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 0 18px rgba(255,211,107,0)}}
+.vthumb video,.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vthumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(0,0,0,.15),rgba(0,0,0,.45))}
+.vthumb .play b{width:78px;height:78px;border-radius:50%;background:rgba(255,211,107,.95);display:flex;align-items:center;justify-content:center;font-size:34px;color:#2a160c;padding-left:6px;animation:pp 1.6s ease-in-out infinite}
+@keyframes pp{50%{transform:scale(1.12)}}
+.vthumb .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.9));font:700 21px system-ui;text-align:center}
+#vx{position:fixed;z-index:95;background:#000;overflow:hidden;border-radius:18px;transition:all .75s cubic-bezier(.7,0,.2,1);display:none;transform-origin:50% 50%}
+#vx.show{display:block}
+#vx.full{border-radius:0}
+#vx video,#vx img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#vx img{object-fit:cover;animation:kb 16s ease-in-out infinite alternate}
+#vxdim{position:fixed;inset:0;z-index:94;background:rgba(0,0,0,0);pointer-events:none;transition:background .7s}
+#vxdim.on{background:rgba(0,0,0,.85);pointer-events:auto}
+#vxcap{position:absolute;left:0;right:0;bottom:0;padding:70px 60px 34px;background:linear-gradient(transparent,rgba(0,0,0,.92));opacity:0;transform:translateY(30px);transition:all .7s .5s}
+#vx.full #vxcap{opacity:0;display:none}
+#vxcap small{display:block;color:#ffd36b;font:700 22px system-ui;letter-spacing:4px;text-transform:uppercase}
+#vxcap h2{font-size:clamp(28px,5vmin,64px);color:#fff;margin:6px 0}
+#vxcap p{font:400 clamp(16px,3vmin,30px) system-ui;color:#eee;max-width:1400px}
+#vxclose{position:absolute;top:22px;right:22px;width:56px;height:56px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:28px;cursor:pointer;z-index:3;opacity:0;transition:opacity .5s .6s}
+#vx.full #vxclose{opacity:1}
+#vxflash{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle,rgba(255,211,107,.55),transparent 60%);opacity:0}
+#vx.full #vxflash{animation:flash 1s ease-out .55s}
+@keyframes flash{0%{opacity:1;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+
+/* ======== MAGIC THEME v5 ======== */
+#stage{perspective:2600px;perspective-origin:50% 50%}
+.slide{background:#0b0704;backface-visibility:hidden;-webkit-backface-visibility:hidden;opacity:0;visibility:hidden;
+  transform:translateZ(-960px) rotateY(90deg) translateZ(960px);
+  transition:transform 1.15s cubic-bezier(.65,0,.3,1),opacity .35s .85s,visibility 0s 1.15s}
+.slide.prev{transform:translateZ(-960px) rotateY(-90deg) translateZ(960px)}
+.slide.active{transform:translateZ(-960px) rotateY(0deg) translateZ(960px);opacity:1;visibility:visible;transition:transform 1.15s cubic-bezier(.65,0,.3,1),opacity .2s,visibility 0s}
+.slide::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;background:#000;opacity:.6;transition:opacity 1.1s}
+.slide.active::after{opacity:0}
+.vid{position:static;height:300px;flex:none;border:0;overflow:visible;cursor:default}
+.vid img.kb{position:absolute;inset:-6%;width:112%;height:112%;z-index:0;animation-duration:26s}
+.vid::after{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 50% 20%,rgba(10,6,3,.15),rgba(10,6,3,.55) 60%,rgba(10,6,3,.8))}
+.tag{display:none}
+.vtitle{top:30px;left:46px;bottom:auto;z-index:6;display:flex;align-items:center;gap:20px;padding:14px 46px 14px 22px;max-width:1240px;
+  background:linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.08));backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);
+  border:1.5px solid rgba(255,255,255,.45);border-radius:40px;box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.5)}
+.vtitle h2{font-size:68px;color:#fff;text-shadow:0 3px 14px rgba(0,0,0,.55)}
+.vtitle small{color:#ffe08a;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.letter{font:900 200px/0.82 Georgia,serif;background-size:cover;background-position:center;-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:3px rgba(255,255,255,.9);filter:drop-shadow(0 6px 18px rgba(0,0,0,.6));padding:0 6px;animation:letterIn 1.2s cubic-bezier(.2,.9,.2,1) both}
+.active .letter{animation:letterIn 1.2s cubic-bezier(.2,.9,.2,1) .5s both}
+@keyframes letterIn{from{transform:scale(2.4) rotate(-12deg);opacity:0;filter:blur(12px)}to{transform:none;opacity:1}}
+.body{position:relative;z-index:5}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.2),rgba(255,255,255,.06));backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);
+  border:1.5px solid rgba(255,255,255,.32);border-radius:28px;box-shadow:0 14px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.lead{color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);background:rgba(10,6,3,.35);padding:10px 18px;border-radius:18px;backdrop-filter:blur(8px)}
+.vthumb{left:auto;right:50px;top:30px;transform:none;z-index:9;width:420px;height:236px}
+.vthumb:hover{transform:scale(1.05)}
+.hero .vthumb{right:auto;left:50%;transform:translateX(-50%)}
+.hero .vthumb:hover{transform:translateX(-50%) scale(1.05)}
+.temp{right:520px;top:250px}
+.cloud,.birds,.rain,.rays,.desert,.stars,.sunm,.dune,.camel{z-index:2}
+.hero .bgimg{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;z-index:0;animation:kb 24s ease-in-out infinite alternate;opacity:.5;filter:brightness(.6) saturate(1.2)}
+.hero h1,.author{text-shadow:0 4px 20px rgba(0,0,0,.9)}
+.hero .arcane{opacity:.75}
+.hero>*:not(.bgimg):not(.vthumb){z-index:3}
+/* arcane circle */
+.arcane{position:absolute;pointer-events:none;z-index:2;filter:drop-shadow(0 0 14px rgba(255,200,80,.9)) drop-shadow(0 0 40px rgba(255,150,40,.6))}
+.arcane .r1{animation:spinA 40s linear infinite;transform-origin:50% 50%;transform-box:fill-box}
+.arcane .r2{animation:spinA 26s linear infinite reverse;transform-origin:50% 50%;transform-box:fill-box}
+.arcane .r3{animation:spinA 60s linear infinite;transform-origin:50% 50%;transform-box:fill-box}
+.active .arcane{animation:arcIn 1.6s cubic-bezier(.2,.9,.2,1) .4s both}
+@keyframes arcIn{from{opacity:0;transform:scale(.3) rotate(-90deg)}to{opacity:1;transform:none}}
+@keyframes spinA{to{transform:rotate(360deg)}}
+.portal{position:absolute;border-radius:50%;z-index:1;pointer-events:none;background:conic-gradient(from 0deg,#2a0b4a,#6a2bd9,#1e90ff,#0b1e4a,#ff8a3d,#3a0b5a,#2a0b4a);filter:blur(28px);opacity:.75;animation:spinA 14s linear infinite}
+.portal::after{content:"";position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle,#fff6d9 0%,rgba(255,210,120,.6) 30%,transparent 70%)}
+/* light beam summoning */
+.beam{position:absolute;z-index:4;pointer-events:none;width:14px;top:0;height:100%;left:50%;margin-left:-7px;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 30%,#ffe7a0 70%,rgba(255,200,80,0));
+  box-shadow:0 0 30px 12px rgba(255,220,140,.8),0 0 120px 40px rgba(255,190,80,.5);opacity:0;transform:scaleY(0);transform-origin:50% 0}
+.active .beam{animation:beam 2.4s ease-out .6s both}
+@keyframes beam{0%{opacity:0;transform:scaleY(0)}25%{opacity:1;transform:scaleY(1)}60%{opacity:.9;width:14px}100%{opacity:0;transform:scaleY(1) scaleX(4)}}
+.burst{position:absolute;z-index:4;pointer-events:none;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,#fff,rgba(255,220,140,.9) 30%,rgba(255,160,60,0) 70%);opacity:0}
+.active .burst{animation:burst 1.6s ease-out 1.1s both}
+@keyframes burst{0%{opacity:0;transform:scale(.2)}20%{opacity:1}100%{opacity:0;transform:scale(30)}}
+.gears{position:absolute;z-index:1;pointer-events:none;opacity:.22}
+.gears g{transform-box:fill-box;transform-origin:50% 50%}
+#fx,#bolt{position:absolute;inset:0;z-index:30;pointer-events:none}
+#bolt{z-index:31}
+
+/* ======== v6 LAYOUT ======== */
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.tslide .bgw{position:absolute;inset:0;z-index:0;overflow:hidden}
+.tslide .bgw img.kb{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;animation:kb 28s ease-in-out infinite alternate;filter:saturate(1.15)}
+.tslide .bgw::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 100% at 50% 30%,rgba(8,5,3,.45),rgba(8,5,3,.78) 70%,rgba(5,3,2,.92))}
+.desertbg::after{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35))!important}
+.desertbg .temp{right:470px;top:40px;z-index:3}
+.hd{position:absolute;left:0;right:0;top:0;height:220px;z-index:6}
+.tslide .vtitle{top:24px;left:46px;max-width:1380px;padding:10px 44px 10px 18px}
+.tslide .vtitle h2{font-size:62px;line-height:1.05;background:linear-gradient(180deg,#ffffff,#ffe9b0 55%,#ffc56b);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 3px 10px rgba(0,0,0,.7))}
+.tslide .vtitle small{font-size:24px;letter-spacing:3px;color:#7fe0ff}
+.tslide .letter{font-size:160px}
+.bd{position:absolute;left:46px;right:46px;top:230px;bottom:34px;z-index:5;display:grid;gap:28px;align-items:stretch;grid-template-rows:minmax(0,1fr)}
+.bd>*{min-height:0}
+.col{display:flex;flex-direction:column;gap:22px;min-height:0}
+.col[style*="grid"]{display:grid;gap:22px}
+.txt{padding:24px 34px;line-height:1.5;color:#fffaf0;overflow:hidden;background:linear-gradient(145deg,rgba(20,12,6,.72),rgba(20,12,6,.5))!important;border:1.5px solid rgba(255,211,107,.45)!important}
+.txt p{margin:0 0 .55em;text-align:justify;hyphens:auto;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.txt p:last-child{margin-bottom:0}
+.txt .h{font-weight:800;background:linear-gradient(90deg,#ff9a3d,#ffd36b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.txt b.k,.card b.k,.tq b.k{color:#ffd36b;font-weight:800}
+.txt b.n,.card b.n{color:#7dffb0;font-weight:800;white-space:nowrap}
+.note{margin-top:14px;padding:14px 20px;border-radius:18px;background:rgba(255,211,107,.14);border:1.5px dashed rgba(255,211,107,.7);font-size:.92em}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stats .stat{padding:14px 18px}
+.stat .nn{font-family:Georgia,serif;font-size:50px;font-weight:700;color:#ffd36b;line-height:1}
+.stat p{font-size:21px}
+/* ---------- magic frame ---------- */
+.frame{position:relative;margin:0;flex:1;min-height:0;border-radius:24px;padding:6px;cursor:zoom-in;
+  background:conic-gradient(from var(--a),#ffd36b,#ff6a3d,#c77dff,#4fc3ff,#6ed37a,#ffd36b);animation:frspin 4s linear infinite;
+  box-shadow:0 0 22px rgba(255,200,90,.55),0 18px 40px rgba(0,0,0,.5);transition:transform .35s}
+.frame:hover{transform:scale(1.025)}
+@keyframes frspin{to{--a:360deg}}
+.frame .fi{width:100%;height:100%;border-radius:19px;overflow:hidden;background:#0b0704}
+.frame img{width:100%;height:100%;display:block;transition:transform .6s}
+.frame:hover img{transform:scale(1.06)}
+.frame img[style*="contain"]{background:#f4f1e8}
+.frame figcaption{position:absolute;left:6px;right:6px;bottom:6px;border-radius:0 0 19px 19px;padding:28px 16px 10px;background:linear-gradient(transparent,rgba(0,0,0,.88));font:700 20px system-ui;color:#fff;pointer-events:none}
+.frame figcaption::before{content:"🔍 "}
+.frame .sp{position:absolute;font-style:normal;font-size:30px;color:#fff3c4;text-shadow:0 0 10px #ffd36b,0 0 22px #ff9a3d;animation:spk 2.4s ease-in-out infinite;pointer-events:none;z-index:3}
+.frame .s0{left:-12px;top:-16px}.frame .s1{right:-12px;top:-16px;animation-delay:.6s}.frame .s2{left:-12px;bottom:-16px;animation-delay:1.2s}.frame .s3{right:-12px;bottom:-16px;animation-delay:1.8s}
+@keyframes spk{0%,100%{transform:scale(.6) rotate(0);opacity:.6}50%{transform:scale(1.25) rotate(180deg);opacity:1}}
+.vthumb{border:0!important;padding:5px;background:conic-gradient(from var(--a),#ffd36b,#ff6a3d,#c77dff,#4fc3ff,#6ed37a,#ffd36b)!important;animation:frspin 3s linear infinite!important;
+  box-shadow:0 0 26px rgba(255,200,90,.7),0 14px 40px rgba(0,0,0,.6)!important;width:380px!important;height:214px!important;top:22px!important;right:46px!important}
+.vthumb video{border-radius:13px}
+.vthumb .play,.vthumb .cap{margin:5px;border-radius:0 0 13px 13px}
+.vthumb .play{border-radius:13px}
+/* ---------- stage edge ---------- */
+#edge{position:absolute;inset:0;z-index:35;pointer-events:none;border-radius:6px;padding:7px;
+  background:conic-gradient(from var(--a),#ffd36b,#ff6a3d,#c77dff,#4fc3ff,#6ed37a,#ffd36b);animation:frspin 6s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:drop-shadow(0 0 10px rgba(255,200,90,.9))}
+.corner{position:absolute;z-index:36;pointer-events:none;width:150px;height:150px;filter:drop-shadow(0 0 10px rgba(255,200,80,.9))}
+.corner.c1{left:-45px;top:-45px}.corner.c2{right:-45px;top:-45px}.corner.c3{left:-45px;bottom:-45px}.corner.c4{right:-45px;bottom:-45px}
+/* ---------- lightbox ---------- */
+#lbdim{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,0);pointer-events:none;transition:background .5s}
+#lbdim.on{background:rgba(0,0,0,.88);pointer-events:auto}
+#lb{position:fixed;z-index:71;display:none;border-radius:20px;padding:6px;cursor:zoom-out;transition:all .65s cubic-bezier(.7,0,.2,1);
+  background:conic-gradient(from var(--a),#ffd36b,#ff6a3d,#c77dff,#4fc3ff,#6ed37a,#ffd36b);animation:frspin 4s linear infinite;box-shadow:0 0 50px rgba(255,200,90,.6)}
+#lb.show{display:block}
+#lb img{width:100%;height:100%;object-fit:contain;border-radius:15px;background:#111;display:block}
+#lbcap{position:fixed;z-index:72;left:0;right:0;bottom:3vh;text-align:center;font:800 clamp(18px,3vmin,34px) system-ui;color:#ffe9b0;text-shadow:0 2px 12px #000;opacity:0;transition:opacity .5s .4s;pointer-events:none}
+#lbcap.on{opacity:1}
+/* ---------- misc blocks ---------- */
+.mapbox{flex:1}
+.zoo{grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;height:100%}
+#zoo2{grid-template-columns:repeat(5,1fr)}
+#zoo3{grid-template-columns:repeat(4,1fr)}
+.an{padding:8px 6px}
+.an .e{font-size:64px}.an h4{font-size:25px}.an p{font-size:18px}
+.an{background:radial-gradient(circle at 50% 30%,rgba(255,211,107,.25),rgba(20,12,6,.6))}
+.tl.wide{display:grid;grid-template-columns:repeat(7,1fr);gap:18px;height:100%;align-content:center}
+.tl.wide::before{top:118px}
+.tl.wide .ph{width:230px;height:230px}
+.tl.wide .per h4{font-size:30px}.tl.wide .per p{font-size:22px}.tl.wide .per .yr{font-size:22px}
+.gorstcard{flex:0 0 auto}
+.gorstcard.g2{flex:1}
+.mins{display:grid;grid-template-columns:1fr 1fr;gap:16px;height:100%}
+.min .e{font-size:58px}.min h4{font-size:26px}.min p{font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip2{display:inline-block;padding:12px 24px;border-radius:30px;font:700 30px system-ui;color:#2a160c;background:linear-gradient(90deg,#ffd36b,#ffb347);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.txt .chip2{font-size:.72em;padding:6px 14px}
+.tq{font-size:31px;line-height:1.45;color:#fff;margin-bottom:14px}
+.tq.small{font-size:22px;margin:14px 0 0;color:#ffe9b0}
+.tb{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:30px}
+.tb th{text-align:left;color:#7fe0ff;font-size:22px;padding:4px 14px}
+.tb td{background:rgba(255,255,255,.1);padding:10px 14px}
+.tb td:first-child{border-radius:12px 0 0 12px;font-weight:800;color:#ffd36b;width:70px;text-align:center}
+.tb td:last-child{border-radius:0 12px 12px 0}
+.rv{cursor:pointer}.rv b{display:none;color:#7dffb0}.rv span{color:#ffd36b;font-weight:900}
+.rv.on b{display:inline;animation:rise .6s both}.rv.on span{display:none}
+.q h4{font-size:30px;line-height:1.35}
+.q .a{font-size:27px}
+.qz{grid-template-columns:1fr 1fr;height:100%}
+.qz2{display:grid;grid-template-columns:1fr 1fr;gap:16px;height:100%}
+.qz2 .q h4{font-size:27px}
+.qz .q h4{font-size:34px}.qz .q .a{font-size:30px}
+.qz .q{justify-content:center}
+.qn{display:inline-flex;width:40px;height:40px;border-radius:50%;background:#ffd36b;color:#2a160c;align-items:center;justify-content:center;margin-right:12px;font-family:system-ui}
+.regs{display:grid;grid-template-columns:1fr 1fr;gap:18px;height:100%}
+.reg{border-left:8px solid var(--c)!important;display:flex;flex-direction:column;justify-content:center}
+.reg h4{font-size:40px;color:var(--c)}.reg p{font-size:29px;color:#fff;margin-top:10px}
+.plcard{flex:1}
+.plg{grid-template-columns:1fr;gap:0}
+.plg .pl{padding:5px 0}.plg .pl h4{font-size:21px}.plg .pl p{font-size:16px}.plg .pl .e{font-size:34px}
+.lenrow{font-size:26px}
+.rec{font-size:23px}
+h3{font-size:32px}
+.peaks{height:420px}
+.pk .v{font-size:24px}.pk .nm{font-size:21px}
+/* fire text */
+.fire{background:linear-gradient(180deg,#fff6d0 0%,#ffd36b 35%,#ff8a1f 70%,#d43a00 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent;
+  filter:drop-shadow(0 0 8px rgba(255,140,0,.9)) drop-shadow(0 0 24px rgba(255,80,0,.6))!important;animation:flick 1.6s ease-in-out infinite}
+@keyframes flick{0%,100%{filter:drop-shadow(0 0 8px rgba(255,140,0,.9)) drop-shadow(0 0 24px rgba(255,80,0,.6))}50%{filter:drop-shadow(0 0 14px rgba(255,170,40,1)) drop-shadow(0 0 40px rgba(255,90,0,.8))}}
+/* ======== INTRO ======== */
+#intro{position:absolute;inset:0;z-index:200;overflow:hidden;background:#fff;font-family:system-ui}
+#intro .ph1{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;transition:opacity .3s}
+.logo{transform:rotate(-8deg);text-align:center;font:900 150px/0.86 'Arial Black',Impact,system-ui;letter-spacing:-2px}
+.logo span{display:inline-block;background:linear-gradient(180deg,#2bd46b,#0a7a5a);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:lgin .55s cubic-bezier(.2,1.4,.4,1) forwards}
+.logo .l2 span{background:linear-gradient(180deg,#1fb6a0,#0b5d6b);-webkit-background-clip:text;background-clip:text}
+@keyframes lgin{from{opacity:0;transform:translateY(-60px) scale(1.8) rotate(-20deg);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.swoosh{width:780px;height:60px;margin:-10px auto 0;border-bottom:16px solid #16a77a;border-radius:0 0 50% 50%;transform:rotate(-8deg) scaleX(0);animation:sw .7s 1.1s ease-out forwards}
+@keyframes sw{to{transform:rotate(-8deg) scaleX(1)}}
+.logo-sub{margin-top:40px;font:800 40px system-ui;color:#0b5d6b;opacity:0;animation:fadeIn .6s 1.6s forwards;letter-spacing:6px}
+@keyframes fadeIn{to{opacity:1}}
+#intro canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#intro .istart{z-index:10}
+#intro .ph2{position:absolute;inset:0;opacity:0;background:radial-gradient(circle at 50% 50%,#3a1270 0%,#140530 45%,#030008 100%)}
+#intro .ph2 .starsI{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 10% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 25% 70%,#cfe,transparent),radial-gradient(2px 2px at 40% 35%,#fff,transparent),radial-gradient(1.5px 1.5px at 60% 80%,#fff,transparent),radial-gradient(2px 2px at 75% 25%,#fdf,transparent),radial-gradient(1.5px 1.5px at 88% 60%,#fff,transparent),radial-gradient(1px 1px at 50% 55%,#fff,transparent);background-size:400px 300px}
+.neb{position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(30px);top:280px;mix-blend-mode:screen}
+.neb.b{left:-200px;background:radial-gradient(circle,#4aa8ff,#1b3cff 40%,transparent 70%)}
+.neb.o{right:-200px;background:radial-gradient(circle,#ffb347,#ff5a1f 40%,transparent 70%)}
+#intro.p2 .neb.b{animation:nb 2.2s cubic-bezier(.6,0,.4,1) forwards}
+#intro.p2 .neb.o{animation:no 2.2s cubic-bezier(.6,0,.4,1) forwards}
+@keyframes nb{to{left:560px}}@keyframes no{to{right:560px}}
+#intro .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#intro .ph3{position:absolute;inset:0;opacity:0;background:radial-gradient(90% 70% at 50% 45%,#3a2618 0%,#1a0f08 55%,#060302 100%)}
+.floor{position:absolute;left:-10%;right:-10%;bottom:-60px;height:430px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 160px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 70px),linear-gradient(180deg,#2a1c12,#0d0805);transform:perspective(700px) rotateX(55deg);transform-origin:50% 100%}
+.wallarch{position:absolute;top:60px;width:300px;height:600px;border-radius:150px 150px 0 0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2));box-shadow:inset 0 0 60px rgba(0,0,0,.8)}
+.candle{position:absolute;width:var(--w,26px);height:var(--h,110px);bottom:var(--b,150px);background:linear-gradient(90deg,#d9c8a0,#fff3d6 45%,#c9b48a);border-radius:6px 6px 3px 3px;box-shadow:0 0 40px rgba(255,170,60,.25)}
+.candle::before{content:"";position:absolute;left:50%;top:-34px;width:18px;height:34px;margin-left:-9px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff 0%,#ffe08a 30%,#ff9a2e 60%,rgba(255,80,0,0) 75%);animation:fl .18s ease-in-out infinite alternate;filter:blur(.5px)}
+.candle::after{content:"";position:absolute;left:50%;top:-80px;width:140px;height:140px;margin-left:-70px;border-radius:50%;background:radial-gradient(circle,rgba(255,180,80,.45),transparent 65%);animation:gl 2s ease-in-out infinite alternate}
+@keyframes fl{from{transform:scaleY(1) skewX(-3deg)}to{transform:scaleY(1.15) skewX(4deg)}}
+@keyframes gl{to{opacity:.6;transform:scale(1.15)}}
+.fog{position:absolute;bottom:60px;width:900px;height:220px;border-radius:50%;background:radial-gradient(closest-side,rgba(220,220,230,.28),transparent);filter:blur(10px);animation:fog 14s ease-in-out infinite alternate}
+@keyframes fog{to{transform:translateX(260px)}}
+.book{position:absolute;left:50%;top:610px;width:520px;height:300px;margin-left:-260px;perspective:1600px;transform:rotateX(18deg)}
+.book .cover{position:absolute;inset:0;border-radius:12px;background:linear-gradient(135deg,#6b3a1e,#3b1c0c);box-shadow:0 30px 60px rgba(0,0,0,.8),inset 0 0 0 6px #8a5a2a,inset 0 0 0 10px #c8a24a}
+.book .pg{position:absolute;top:10px;bottom:10px;width:248px;background:linear-gradient(90deg,#efe3c0,#fff8e6);border-radius:4px;box-shadow:inset 0 0 30px rgba(120,80,20,.35)}
+.book .bpl{left:12px}.book .bpr{right:12px}
+.book .lid{position:absolute;top:0;bottom:0;right:0;width:50%;transform-origin:0 50%;border-radius:0 12px 12px 0;background:linear-gradient(135deg,#7a4422,#3b1c0c);box-shadow:inset 0 0 0 6px #8a5a2a,inset 0 0 0 10px #c8a24a;display:flex;align-items:center;justify-content:center;font-size:110px;color:#e8c25a;text-shadow:0 0 20px #ffb347;backface-visibility:hidden}
+#intro.p3 .book .lid{animation:lid 1.6s .4s cubic-bezier(.5,0,.2,1) forwards}
+@keyframes lid{to{transform:rotateY(-178deg)}}
+.booklight{position:absolute;left:50%;top:520px;width:700px;height:400px;margin-left:-350px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,230,150,.9),rgba(255,170,60,.35),transparent);opacity:0;filter:blur(8px)}
+#intro.p3 .booklight{animation:fadeIn 1.2s 1.4s forwards}
+.ftitle{position:absolute;left:0;right:0;top:150px;text-align:center;font:900 168px/1 Georgia,serif;letter-spacing:6px}
+.ftitle .ln{display:block}
+.ftitle span{display:inline-block;opacity:0;background:linear-gradient(180deg,#fff9e0 0%,#ffe08a 30%,#ff9a2e 65%,#c83a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 10px rgba(255,150,0,1)) drop-shadow(0 0 30px rgba(255,80,0,.8))}
+#intro.p4 .ftitle span{animation:burn .9s cubic-bezier(.2,.9,.2,1) forwards,flick 1.3s ease-in-out 1s infinite}
+@keyframes burn{0%{opacity:0;transform:translateY(40px) scale(.6);filter:blur(14px) drop-shadow(0 0 40px #ff5a00)}60%{opacity:1;filter:blur(0) drop-shadow(0 0 30px #ff9a00)}100%{opacity:1;transform:none}}
+.ftitle .ln2{font-size:118px;margin-top:6px}
+.isub{position:absolute;left:0;right:0;top:470px;text-align:center;font:700 36px system-ui;color:#ffe9b0;letter-spacing:6px;opacity:0;text-shadow:0 0 14px rgba(255,160,40,.8)}
+#intro.p4 .isub{animation:fadeIn 1s 2.2s forwards}
+.istart{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);border:0;padding:22px 60px;border-radius:60px;font:800 34px system-ui;color:#2a160c;background:linear-gradient(90deg,#ff9a3d,#ffd36b);box-shadow:0 0 40px rgba(255,170,60,.8);cursor:pointer;opacity:0;pointer-events:none}
+#intro.p4 .istart{animation:fadeIn .8s 3s forwards,pulseB 1.6s 3.8s ease-in-out infinite;pointer-events:auto}
+@keyframes pulseB{50%{box-shadow:0 0 70px rgba(255,170,60,1);transform:translateX(-50%) scale(1.06)}}
+.iskip{position:absolute;right:30px;top:24px;z-index:5;border:1px solid rgba(128,128,128,.5);background:rgba(0,0,0,.35);color:#fff;font:700 20px system-ui;padding:10px 20px;border-radius:30px;cursor:pointer}
+#intro.out{animation:introOut 1.2s forwards}
+@keyframes introOut{to{opacity:0;transform:scale(1.15);filter:blur(10px);visibility:hidden}}
+
+body.intro #nav,body.intro #bar{display:none}
+
+/* ---- Mavzu / Teacher ---- */
+.mavzu{position:absolute;left:0;right:0;top:62px;text-align:center;font:900 64px/1 Georgia,serif;letter-spacing:14px;opacity:0;
+  background:linear-gradient(90deg,#4fc3ff,#c77dff,#ff6ad5,#ffd36b,#4fc3ff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 12px rgba(199,125,255,.9));animation:none}
+#intro.p4 .mavzu{animation:fadeIn 1s .1s forwards,rainbow 4s linear infinite}
+.ftitle{top:150px}
+@keyframes rainbow{to{background-position:300% 0}}
+.teacher{position:absolute;left:0;right:0;top:522px;text-align:center;font:italic 700 50px/1.1 Georgia,serif;opacity:0;
+  background:linear-gradient(90deg,#7dffb0,#4fc3ff,#c77dff,#ff6ad5,#ffd36b,#7dffb0);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(79,195,255,.7))}
+.teacher span,.teacher2 span{font-style:normal;font-weight:900;letter-spacing:3px}
+#intro.p4 .teacher{animation:fadeIn 1s 2.6s forwards,rainbow 5s linear infinite}
+.book{top:640px!important}.booklight{top:560px!important}
+.mavzu2{position:relative;font:900 44px/1 Georgia,serif;letter-spacing:12px;margin-bottom:6px;background:linear-gradient(90deg,#4fc3ff,#c77dff,#ff6ad5,#ffd36b,#4fc3ff);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(199,125,255,.9));animation:rainbow 4s linear infinite}
+.active .mavzu2{animation:rise .8s .1s both,rainbow 4s linear infinite}
+.teacher2{position:relative;margin-top:14px;font:italic 700 44px Georgia,serif;background:linear-gradient(90deg,#7dffb0,#4fc3ff,#c77dff,#ff6ad5,#ffd36b,#7dffb0);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 8px rgba(0,0,0,.9))}
+.active .teacher2{animation:rise .8s .4s both,rainbow 5s linear infinite}
+.hero .sub{margin-top:12px}
+/* ---- background slideshow ---- */
+.bgw img.bgx{opacity:0;transition:opacity 2s ease}
+.bgw img.bgx.on{opacity:1}
+/* ---- Ko'rgazma button ---- */
+.kbtn{position:absolute;z-index:9;top:250px;right:46px;display:none}
+.kgo{border:0;cursor:pointer;padding:12px 26px;border-radius:40px;font:800 24px system-ui;color:#fff;background:linear-gradient(90deg,#c77dff,#4fc3ff);box-shadow:0 0 22px rgba(199,125,255,.7);animation:pulseK 2.2s ease-in-out infinite}
+@keyframes pulseK{50%{box-shadow:0 0 40px rgba(79,195,255,.95);transform:scale(1.05)}}
+.hd .kgo{position:absolute;right:450px;top:70px}
+.hero .kgo{position:absolute;right:60px;top:60px;z-index:9}
+/* ---- Ko'rgazma overlay (cube slideshow) ---- */
+#kz{position:fixed;inset:0;z-index:80;background:#000;display:none;touch-action:none}
+#kzs{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:50% 50%;perspective:2200px;overflow:hidden;background:#000}
+#kz.on{display:block;animation:fadeIn .5s both}
+.kf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(-960px) rotateY(90deg) translateZ(960px);
+  transition:transform 1.2s cubic-bezier(.65,0,.3,1);overflow:hidden;visibility:hidden}
+.kf.cur,.kf.out{visibility:visible}
+.kf.prev{transform:translateZ(-960px) rotateY(-90deg) translateZ(960px)}
+.kf.cur{transform:translateZ(-960px) rotateY(0deg) translateZ(960px)}
+.kf .kimg{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;filter:saturate(1.15) brightness(1.05)}
+.kf.cur .kimg{animation:kb 9s ease-in-out both}
+.kf .kfit{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 40px rgba(0,0,0,.6))}
+.kf .kblur{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(30px) brightness(.8)}
+.kpan{position:absolute;left:96px;right:96px;bottom:65px;min-height:324px;display:flex;align-items:center;gap:58px;padding:32px 77px;border-radius:54px;
+  background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.7));box-shadow:0 20px 60px rgba(0,0,0,.35);border:2px solid rgba(255,255,255,.8)}
+.kf.fitm .kfit{left:38px;top:32px;width:1075px;height:1015px}
+.kf.fitm .kpan{top:110px;bottom:30px;align-items:flex-start;overflow:hidden;flex-direction:column;gap:10px;left:auto;right:58px;bottom:32px;width:730px;min-height:0}
+.kL{font:900 281px/0.8 Georgia,serif;background-size:cover;background-position:center;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:2px rgba(60,40,20,.5);flex:none}
+.kf.fitm .kT{min-height:0;flex:1;overflow:hidden;width:100%}
+.kT p b.k{color:#9a4b00}.kT p b.n{color:#0a7a4a}.kT p .h{color:#b03a00;background:none;-webkit-text-fill-color:#b03a00}
+.kf.fitm .kvid~.kL{display:none}
+.kf.fitm .kL{font-size:151px}
+.kT h3{font:900 65px/1.1 Georgia,serif;color:#2a1608;margin-bottom:15px;background:none;-webkit-text-fill-color:#2a1608}
+.kT p{font:500 31px/1.45 system-ui;color:#2b1d10}
+.kf.cur .kpan{animation:panIn 1s .5s both}
+.kf.cur .kL{animation:letterIn 1.2s .8s both}
+@keyframes panIn{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+.kbar{position:absolute;left:0;top:0;height:6px;background:linear-gradient(90deg,#c77dff,#4fc3ff,#ffd36b);z-index:5;width:0}
+.kbar.run{animation:kbar 5s linear forwards}
+@keyframes kbar{to{width:100%}}
+.kctl{position:absolute;z-index:6;right:38px;top:22px;display:flex;gap:10px}
+.kctl button{border:0;width:58px;height:58px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;font-size:24px;cursor:pointer}
+.kcount{position:absolute;z-index:6;left:38px;top:27px;font:800 22px system-ui;color:#fff;background:rgba(0,0,0,.45);padding:8px 16px;border-radius:30px}
+.kswipe{position:absolute;z-index:6;left:50%;bottom:24px;transform:translateX(-50%);font:700 22px system-ui;color:#fff;background:rgba(0,0,0,.45);padding:8px 20px;border-radius:30px;animation:fadeIn 1s both}
+.kctl button{width:70px!important;height:70px!important;font-size:28px!important}
+
+.kvid{position:relative;flex:none;width:100%;height:300px;border-radius:20px;padding:5px;cursor:pointer;background:conic-gradient(from var(--a),#ffd36b,#ff6a3d,#c77dff,#4fc3ff,#6ed37a,#ffd36b);animation:frspin 3s linear infinite;box-shadow:0 0 24px rgba(199,125,255,.6)}
+.kvid video{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;background:#000}
+.kvid .kpl{position:absolute;inset:5px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(0,0,0,.1),rgba(0,0,0,.45))}
+.kvid .kpl b{width:84px;height:84px;border-radius:50%;background:rgba(255,211,107,.95);display:flex;align-items:center;justify-content:center;font-size:38px;color:#2a160c;padding-left:6px;animation:pp 1.6s ease-in-out infinite}
+.kvid .kvc{position:absolute;left:5px;right:5px;bottom:5px;border-radius:0 0 16px 16px;padding:24px 14px 8px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;font:800 22px system-ui}
+
+.filmbtn{margin-top:26px!important;font-size:34px!important;padding:20px 56px!important;background:linear-gradient(90deg,#c77dff,#4fc3ff,#7dffb0)!important;color:#10131f!important;
+  box-shadow:0 0 40px rgba(79,195,255,.8)!important;animation:pulseK 2s ease-in-out infinite}
+.active .filmbtn{animation:rise .8s 1s both,pulseK 2s 1.8s ease-in-out infinite}
+
+/* ======== v8: KO‘RGAZMA USLUBI — barcha slaydlar ======== */
+.tslide .bgw img.kb{filter:saturate(1.2) brightness(1.04)}
+.tslide .bgw::after{background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.2))!important}
+.tslide .vtitle{background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.74))!important;border:2px solid #fff!important;box-shadow:0 18px 50px rgba(0,0,0,.35)!important}
+.tslide .vtitle h2{background:none!important;-webkit-text-fill-color:#2a1608;color:#2a1608;filter:none!important;text-shadow:none!important}
+.tslide .vtitle small{color:#0a6a8a!important;text-shadow:none!important}
+.tslide .letter{-webkit-text-stroke:2px rgba(60,40,20,.55)}
+.tslide .card,.tslide .txt{background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(255,255,255,.8))!important;border:2px solid rgba(255,255,255,.95)!important;color:#2a1608;box-shadow:0 18px 50px rgba(0,0,0,.35)!important}
+.tslide .txt p{color:#2b1d10;text-shadow:none}
+.tslide b.k,.tslide .txt b.k,.tslide .card b.k,.tslide .tq b.k{color:#b04a00}
+.tslide b.n,.tslide .txt b.n,.tslide .card b.n{color:#05804c}
+.tslide .txt .h{background:linear-gradient(90deg,#c0300b,#e67e22);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tslide h3{color:#9a4b00}
+.tslide .rec{color:#2a1608;border-bottom-color:rgba(0,0,0,.12)}.tslide .rec b{color:#2a1608}
+.tslide .stat .nn{color:#b85c00}.tslide .stat .u{color:#7a4a1c}.tslide .stat p{color:#4a3520}
+.tslide .lenrow{color:#2a1608}.tslide .lenrow span{color:#0a6aa8}.tslide .lenbar{background:rgba(0,0,0,.1)}
+.tslide .min h4{color:#2a1608}.tslide .min p{color:#5a4030}
+.tslide .an{background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(255,255,255,.78))!important;border:2px solid #fff!important;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.tslide .an h4{color:#2a1608}.tslide .an p{color:#4a3520}
+.tslide .q h4{color:#2a1608}.tslide .q .a{color:#05804c}
+.tslide .tq{color:#2a1608}.tslide .tq.small{color:#7a4a1c}
+.tslide .tb th{color:#0a6a8a}.tslide .tb td{background:rgba(0,0,0,.06);color:#2a1608}.tslide .tb td:first-child{color:#b85c00}
+.tslide .rv b{color:#05804c}.tslide .rv span{color:#b85c00}
+.tslide .reg p{color:#2a1608}.tslide .reg h4{filter:brightness(.7) saturate(1.5)}
+.tslide .tl.wide .per{background:linear-gradient(135deg,rgba(255,255,255,.93),rgba(255,255,255,.78));border-radius:26px;padding:18px 10px;box-shadow:0 14px 34px rgba(0,0,0,.3)}
+.tslide .tl.wide .per h4{color:#2a1608}.tslide .tl.wide .per p{color:#4a3520}
+.tslide .tl.wide::before{top:140px}
+.tslide .note{background:rgba(255,190,60,.22);border-color:#c27b00;color:#2a1608}
+.tslide .pk .v{color:#b85c00}.tslide .pk .nm{color:#2a1608}.tslide .below .nn{color:#0a6aa8}
+.tslide .blklab{color:#9a4b00}
+.tslide .plg .pl h4{color:#2a1608}.tslide .plg .pl p{color:#5a4030}.tslide .plg .pl{border-bottom-color:rgba(0,0,0,.1)}
+.tslide .qn{background:#b85c00;color:#fff}
+.tslide .chip2{box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.hero .bgimg{opacity:.85!important;filter:brightness(.72) saturate(1.25)!important}
+/* ======== v9: yozuvlar qotmasligi uchun (dizayn o'zgarmaydi) ======== */
+.slide:not(.active):not(.leaving) *,.slide:not(.active):not(.leaving)::after,.slide:not(.active):not(.leaving) *::before,.slide:not(.active):not(.leaving) *::after{animation-play-state:paused!important}
+body.intro .slide{visibility:hidden!important}
+.tslide .card,.tslide .txt,.tslide .vtitle,.tslide .lead{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+.tslide .vtitle{background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,255,255,.82))!important}
+.walker,.camel{left:0!important}
+@keyframes walk{from{transform:translateX(2020px)}to{transform:translateX(-240px)}}
+.cloud{left:0!important}
+@keyframes drift{from{transform:translateX(-320px)}to{transform:translateX(2120px)}}
+.birds{left:0!important}
+@keyframes fly{from{transform:translateX(-120px)}to{transform:translateX(2020px)}}
+/* ---- kitob muqovasi: Geografiya 7 ---- */
+.book{will-change:transform}
+.book .lid{font-size:0!important;background:#0b5d8a!important;overflow:hidden}
+.book .lid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0 12px 12px 0}
+.book .pg{background:#fffaf0!important;overflow:hidden}
+.book .pg img{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:contain}
+#intro.p3 .book .lid{animation:lid 1.6s 1.8s cubic-bezier(.5,0,.2,1) forwards}
+/* ======== REAL KITOB (varaqlanadigan) ======== */
+#intro .book{display:none!important}
+.rb-wrap{position:absolute;inset:0;perspective:2600px;perspective-origin:50% 40%;pointer-events:none;transition:transform 1.5s cubic-bezier(.5,0,.2,1);z-index:2}
+#intro.p3 .rb-wrap{animation:rbIn 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rbIn{from{opacity:0;transform:translateY(80px) scale(.85)}to{opacity:1;transform:none}}
+.rb-wrap.small{transform:translateY(262px) scale(.5)!important}
+.rbook{position:absolute;left:480px;top:200px;width:960px;height:640px;transform-style:preserve-3d;transform:translateX(-240px) rotateX(9deg);transition:transform 2.2s cubic-bezier(.45,.05,.25,1)}
+.rbook.open{transform:translateX(0) rotateX(9deg)}
+.rb-board{position:absolute;top:-10px;bottom:-10px;left:50%;right:-12px;border-radius:0 14px 14px 0;background:linear-gradient(90deg,#0a4f78,#0d6a9c);box-shadow:0 40px 80px rgba(0,0,0,.75),0 0 60px rgba(255,190,90,.18)}
+.rb-board.l{left:-12px;right:50%;border-radius:14px 0 0 14px;opacity:0;transition:opacity .4s 1s}
+.rbook.open .rb-board.l{opacity:1}
+.rb-stack{position:absolute;top:2px;bottom:2px;left:50%;right:-6px;border-radius:0 6px 6px 0;background:repeating-linear-gradient(90deg,#efe6cf 0 1px,#d9ccab 1px 2px);transform:translateZ(-1px)}
+.rb-page,.leaf .face{position:absolute;top:0;width:50%;height:100%;background:#fdf9ef;overflow:hidden}
+.rb-page{left:50%;border-radius:0 6px 6px 0}
+.rb-page img,.leaf .face img{position:absolute;left:14px;top:14px;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain}
+.rb-page::after,.leaf .front::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,10,.38),rgba(60,40,10,.08) 6%,transparent 14%)}
+.leaf .back::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(60,40,10,.38),rgba(60,40,10,.08) 6%,transparent 14%)}
+.leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:0 50%;transform-style:preserve-3d;transition:transform 2.4s cubic-bezier(.45,.05,.25,1)}
+.leaf .face{left:0;width:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.leaf .front{border-radius:0 6px 6px 0}
+.leaf .back{transform:rotateY(180deg);border-radius:6px 0 0 6px}
+.leaf.turned{transform:rotateY(-180deg)}
+.leaf .face::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.0),rgba(0,0,0,.45));opacity:0}
+.leaf.flipping .face::before{animation:shade 2.4s ease-in-out}
+@keyframes shade{0%{opacity:0}45%{opacity:1}55%{opacity:1}100%{opacity:0}}
+.leaf.cov .front{background:#0b5d8a;border-radius:0 12px 12px 0;box-shadow:inset 6px 0 14px rgba(0,0,0,.45)}
+.leaf.cov .front img{left:0;top:0;width:100%;height:100%;object-fit:cover}
+.leaf.cov .front::after{background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.12) 3%,transparent 7%,transparent 85%,rgba(255,255,255,.08))}
+.leaf.cov .back{background:#e9f3fb}
+/* ---- start ekrani, yumshoq chaqnash ---- */
+body.gate #intro *,body.gate #intro *::before,body.gate #intro *::after{animation-play-state:paused!important}
+#gate{position:absolute;inset:0;z-index:400;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;background:radial-gradient(circle at 50% 45%,#2a1a0e,#070402 75%);cursor:pointer;animation:none!important}
+#gate .gbook{font-size:180px;filter:drop-shadow(0 0 40px rgba(255,190,90,.7))}
+#gate button{border:0;padding:28px 80px;border-radius:70px;font:800 48px system-ui;color:#2a160c;background:linear-gradient(90deg,#ff9a3d,#ffd36b);box-shadow:0 0 60px rgba(255,170,60,.8);cursor:pointer}
+#gate small{font:700 30px system-ui;color:#ffe9b0;letter-spacing:2px}
+#intro .flash{background:radial-gradient(circle at 50% 50%,rgba(255,236,190,.85),rgba(255,200,120,.25) 45%,rgba(0,0,0,0) 75%)!important}
+.leaf.cov .back{background:#fdf9ef}
+/* ---- oq chaqnash va qotishga qarshi ---- */
+#intro.p2,#intro.p3{background:#060302!important}
+#intro.p3 .ph1,#intro.p3 .ph2,#intro.p2 .ph1{display:none!important}
+#intro.p3 .ph3{background:#1a0f08}
+</style>
 </head>
-<body>
-  <div>
-    <h1>Assalomu alaykum!</h1>
-    <p>Bu Husanjon Safarboyevning birinchi sayti.</p>
-    <a href="https://t.me/Safarboyev_Husanjon">Telegram</a>
+<body class="gate">
+<div id="bar"></div>
+<div id="stage">
+<canvas id="fx" width="1920" height="1080"></canvas><canvas id="bolt" width="1920" height="1080"></canvas>
+<div id="edge"></div><div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+<section class="slide" data-fx="gold" data-video="v/v01.mp4" data-vt="Aslida Afrika qanday?">
+  <div class="hero">
+    <img class="bgimg" src="img/sat.jpg" alt="">
+    <div class="portal" style="width:900px;height:900px;left:510px;top:120px"></div>
+    <div class="arcane" data-arc="1000" style="left:460px;top:70px"></div>
+    <div class="beam"></div><div class="burst" style="left:945px;top:525px"></div>
+    <div class="cloud"></div><div class="cloud c2"></div>
+    <span class="chip rise">GEOGRAFIYA · V BOB</span>
+    <div class="mavzu2 rise" style="--d:.1s">✦ MAVZU ✦</div>
+    <h1 class="rise fire" style="--d:.2s">AFRIKA MATERIGI</h1>
+    <div class="teacher2 rise" style="--d:.4s"><span>Teacher:</span> Safarboyev Husanjon</div>
+    <p class="sub rise" style="--d:.5s">Geografik o‘rni, o‘rganilishi, geologik tuzilishi, relyefi, foydali qazilmalari, tabiat zonalari va tabiiy geografik o‘lkalari</p>
+    <button class="go rise" style="--d:.8s" onclick="go(1)">▶ Boshlash</button>
+    <div class="ground"></div>
+    <div class="parade" id="parade1"></div>
   </div>
+</section><section class="slide tslide " data-fx="gold" data-video="v/v02.mp4" data-vt="Ulkan materik"><div class="bgw"><img class="kb" src="img/kili.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.1. Geografik o‘rni va o‘rganilishi</small><h2>Asosiy xususiyatlari</h2></div></div><div class="bd" style="grid-template-columns:1.22fr .78fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s"><span class=h>Asosiy xususiyatlari.</span> Afrika — kattaligiga ko‘ra <b class="k">Yevrosiyodan keyingi ikkinchi</b> materik. Uning maydoni <b class="n">29,2 mln km²</b>, orollari bilan birga <b class="n">30,3 mln km²</b>. Eng katta oroli — <b class="k">Madagaskar</b>. “Afrika” so‘zi materikning shimolida yashagan berberlarning <b class="k">afrigilar</b> qabilasi nomidan olingan. Keyinchalik bu nom butun materikka berilgan.</p><p class="rise" style="--d:0.27s">Har bir materik o‘z xususiyatlari bilan ajralib turadi. Masalan, <b class="k">Yevrosiyo</b> — eng katta va tabiatiga ko‘ra eng xilma-xil, <b class="k">Janubiy Amerika</b> — eng sernam, <b class="k">Avstraliya</b> — eng kichik va eng quruq, <b class="k">Antarktida</b> — eng sovuq materik.</p></div><div class="col" style=""><div class="stats">
+<div class="card stat rise" style="--d:.2s"><div><span class="nn" data-c="29.2">0</span><span class="u">mln km²</span></div><p>Materik maydoni</p></div>
+<div class="card stat rise" style="--d:.3s"><div><span class="nn" data-c="30.3">0</span><span class="u">mln km²</span></div><p>Orollari bilan birga</p></div>
+<div class="card stat rise" style="--d:.4s"><div><span class="nn" data-c="8000">0</span><span class="u">km</span></div><p>Shimoldan janubga</p></div>
+<div class="card stat rise" style="--d:.5s"><div><span class="nn" data-c="7500">0</span><span class="u">km</span></div><p>G‘arbdan sharqqa</p></div></div><figure class="frame rise" style="" data-cap="Kilimanjaro — Afrikaning eng baland nuqtasi"><div class="fi"><img src="img/kili.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Kilimanjaro — Afrikaning eng baland nuqtasi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="dust"><div class="bgw"><img class="kb" src="img/animals.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Asosiy xususiyatlari</small><h2>Afrika — rekordlar materigi</h2></div></div><div class="bd" style="grid-template-columns:1.22fr .78fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrika — dunyodagi <b class="k">eng issiq materik</b>. Sharqiy yarimsharning eng uzun daryosi, dunyodagi eng katta tropik cho‘l va savanna, quruqlikda eng ko‘p sut emizuvchi hayvonlar yashaydigan, qirg‘oqlari eng kam parchalangan, quruqlikdagi eng katta <b class="k">Buyuk Afrika yer yorig‘i</b> bor, har ikkala kengliklar bo‘yicha iqlim mintaqalari va tabiat zonalari takrorlanib joylashgan, chuchuk suvli eng uzun (<b class="n">750 km</b>) va chuqur <b class="k">Tanganika</b> (<b class="n">1 470 m</b>) ko‘li bor, <b class="k">olmos</b> qazib chiqarishda dunyoda birinchi o‘rinda turuvchi materikdir.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="59-rasm. Afrika hayvonlari"><div class="fi"><img src="img/animals.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>59-rasm. Afrika hayvonlari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Afrika kosmosdan"><div class="fi"><img src="img/sat.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Afrika kosmosdan</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="stars" data-video="v/v03.mp4" data-vt="Gibraltar bo‘g‘ozi"><div class="bgw"><img class="kb" src="img/sat.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.1. Geografik o‘rni, chekka nuqtalari</small><h2>Geografik o‘rni</h2></div></div><div class="bd" style="grid-template-columns:1.05fr .95fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s"><span class=h>Geografik o‘rni, chekka nuqtalari.</span> Afrika boshqa materiklar orasida alohida o‘rin tutadi. U <b class="k">hamma yarimsharlarda</b> joylashgan yagona materik. <b class="k">Ekvator</b> Afrikani deyarli qoq o‘rtasidan ikkiga bo‘lib turadi. Uning shimoldagi va janubdagi chekka nuqtalari ekvatordan deyarli bir xil uzoqlikda joylashgan.</p><p class="rise" style="--d:0.27s"><b class="k">Bosh meridian</b> Afrikaning g‘arbiy qismidan o‘tadi. Materikning shimoliy yarmi g‘arbdan sharqqa bir necha ming kilometrga cho‘zilgan. Janubga tomon materik torayadi. Binobarin, materikning katta qismi ekvatordan shimolda joylashgan.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Afrikaning geografik o‘rni va chekka nuqtalari"><div class="fi"><img src="img/map51.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>Afrikaning geografik o‘rni va chekka nuqtalari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/sat.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Geografik o‘rni</small><h2>Chegaralari va chekka nuqtalari</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrikani Yevropadan sayoz va torgina <b class="k">Gibraltar bo‘g‘izi</b> bilan <b class="k">O‘rta dengiz</b> ajratib turadi. Shimoli-sharqda tor <b class="k">Suvaysh bo‘yni</b> materikni Yevrosiyo bilan tutashtiradi.</p><p class="rise" style="--d:0.27s">Materik sharqida yirik <b class="k">Somali yarimoroli</b> va <b class="k">Mozambik bo‘g‘izi</b> bilan ajralgan <b class="k">Madagaskar</b> oroli joylashgan. G‘arbida yirik <b class="k">Gvineya qo‘ltig‘i</b> bor.</p><p class="rise" style="--d:0.39s">Afrika materigi shimoldan janubga <b class="n">8 000 km</b>, g‘arbdan sharqqa <b class="n">7500 km</b> ga cho‘zilgan.</p><p class="rise" style="--d:0.51s">Materikning chekka nuqtalari: shimoliy — <b class="k">Ben Sekka burni</b>; janubiy — <b class="k">Igna burni</b>; g‘arbiy — <b class="k">Almadi burni</b>; sharqiy — <b class="k">Ras Xafun burni</b>.</p></div><div class="col" style=""><div class="card mapbox rise" style="--d:.3s"><svg class="map" id="map1" viewBox="0 0 588 612"></svg></div></div></div></section>
+<section class="slide tslide " data-fx="water" data-video="v/v04.mp4" data-vt="Suv — hayot manbai"><div class="bgw"><img class="kb" src="img/plato.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Afrikaning ichki suvlari</small><h2>Daryolar va ko‘llar</h2></div></div><div class="bd" style="grid-template-columns:.9fr 1.1fr"><div class="col" style=""><div class="card mapbox rise"><svg class="map" id="map2" viewBox="0 0 588 612"></svg></div></div><div class="col" style=""><div class="card rise" style="--d:.2s"><h3>🌊 Yirik daryolar uzunligi</h3><div id="lens"></div></div><div class="card rise" style="--d:.4s"><h3>💧 Ko‘llar va sharsharalar</h3><div class="rec"><span class="e">🔵</span><div><b class="k">Viktoriya ko‘li</b> — Afrikaning eng katta ko‘li; Nil shu yerdan boshlanadi (boshlanish irmog‘i — Kagera)</div></div><div class="rec"><span class="e">🔷</span><div><b class="k">Tanganika</b> — chuchuk suvli eng uzun (<b class="n">750 km</b>) va chuqur (<b class="n">1 470 m</b>) ko‘l</div></div><div class="rec"><span class="e">🔹</span><div><b class="k">Nyasa (Malavi)</b> va <b class="k">Chad</b> ko‘llari</div></div><div class="rec"><span class="e">🌈</span><div><b class="k">Viktoriya</b> (Zambezi), <b class="k">Livingston</b> va <b class="k">Stenli</b> sharsharalari</div></div></div></div></div></section>
+<section class="slide tslide " data-fx="gold" data-video="v/v05.mp4" data-vt="Nega «qorong‘i qit’a»?"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.1. Geografik o‘rni va o‘rganilishi</small><h2>Materikning o‘rganilishi</h2></div></div><div class="bd" style="grid-template-columns:1.25fr .75fr"><div class="txt card" style="font-size:30.5px"><p class="rise" style="--d:0.15s"><span class=h>Materikning o‘rganilishi.</span> Afrika <b class="k">sivilizatsiyaning beshigi</b> hisoblanadi. Unda <b class="n">3–4 mln yil</b> avval odamlar yashagani arxeolog olimlar tomonidan aniqlangan. 6000 yil avval <b class="k">Nil daryosi vodiysining</b> hosildor yerlarida ilk sivilizatsiya yuzaga kelgan (42-rasm).</p><p class="rise" style="--d:0.27s">Afrika tabiatini, aholisining urf-odatlarini, xo‘jaligini o‘rganishda mashhur marokashlik sayyoh <b class="k">Ibn Battutaning</b> alohida o‘rni bor. U Afrikaning shimoliy va sharqiy sohillarini, Nil havzasini, Sahroi Kabirning g‘arbiy qismini, Niger daryosining yuqori oqimidan o‘rta oqimigacha o‘rgangan. XV asr yevropaliklarning Afrikani o‘rganishida muhim bosqich bo‘lsa-da, unga qora kunlarni — <b class="k">qullar savdosini</b> keltirdi.</p></div><div class="col" style="grid-template-rows:1fr"><figure class="frame rise" style="" data-cap="42-rasm. Afrika materigining o‘rganilishi xaritasi"><div class="fi"><img src="img/map42.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>42-rasm. Afrika materigining o‘rganilishi xaritasi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="gold"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Materikning o‘rganilishi</small><h2>Bartolomeu Dias va Vasko da Gama</h2></div></div><div class="bd" style="grid-template-columns:1.1fr .9fr"><div class="txt card" style="font-size:36px"><p class="rise" style="--d:0.15s">1487-yilda <b class="k">Bartolomeu Dias</b> Afrikaning janubidagi <b class="k">Yaxshi Umid burniga</b> qadar Atlantika okeani sohillarini o‘rgandi.</p><p class="rise" style="--d:0.27s">1498-yilda dengizchi sayyoh <b class="k">Vasko da Gama</b> Hindistonga dengiz yo‘lini ochdi. U Afrikaning janubiy qismini aylanib o‘tdi, materikning sharqiy qirg‘oqlari bo‘ylab suzib, yevropaliklardan birinchi bo‘lib Hindiston qirg‘oqlarigacha yetib bordi.</p></div><div class="col" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr"><figure class="frame rise" style="" data-cap="Vasko da Gama"><div class="fi"><img src="img/gama.jpg" style="object-fit:cover;object-position:top" alt=""></div><figcaption>Vasko da Gama</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Ibn Battuta"><div class="fi"><img src="img/ibn.jpg" style="object-fit:cover;object-position:top" alt=""></div><figcaption>Ibn Battuta</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="gold"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Materikning o‘rganilishi</small><h2>David Livingston va G. M. Stenli</h2></div></div><div class="bd" style="grid-template-columns:1.35fr .65fr"><div class="txt card" style="font-size:30.5px"><p class="rise" style="--d:0.15s">XIX asr o‘rtalarida taniqli ingliz tadqiqotchisi <b class="k">David Livingston</b> materik ichkarisiga bir necha sayohatlar uyushtirdi. Bu sayyoh Janubiy Afrikani g‘arbdan sharqqa kesib o‘tdi. <b class="k">Zambezi</b> daryosini tekshirdi, bu daryoda katta va go‘zal sharsharani topib, qirolicha <b class="k">Viktoriya</b> nomi bilan atadi. Kongo daryosining yuqori oqimini, Nyasa ko‘lini, Kalaxari cho‘lini o‘rgandi.</p><p class="rise" style="--d:0.27s"><b class="k">G. M. Stenli</b> Zanzibar orolini, Viktoriya ko‘lini va Nil daryosining boshlanish irmog‘i <b class="k">Kagera</b> ekanligini aniqladi, Lualaba va Kongo daryolarini quyi oqimiga qadar o‘rgandi.</p><div class="note rise" style="--d:.5s">🦁 David Livingston <b class="k">“sher og‘zidan omon qolgan sayyoh”</b> deb ta’riflanadi. Sayyohga nima sababdan bunday ta’rif berilishini o‘qituvchingiz bilan muhokama qiling.</div></div><div class="col" style=""><figure class="frame rise" style="" data-cap="David Livingston"><div class="fi"><img src="img/livingston.jpg" style="object-fit:cover;object-position:top" alt=""></div><figcaption>David Livingston</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="gold"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Materikning o‘rganilishi</small><h2>Yunker va Vavilov</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrika tabiati va xalqlari hayotini o‘rganishda V. V. Yunker, E. P. Kovalevskiy, A. V. Yeliseyev va N. I. Vavilovlarning xizmatlari katta. <b class="k">Vasiliy Yunker</b> XIX asr oxirida Markaziy va Sharqiy Afrikaga sayohat qildi, turli tadqiqotlar o‘tkazdi va qiziqarli ma’lumotlar to‘pladi.</p><p class="rise" style="--d:0.27s">1926–1927-yillarda materikning shimoli-sharqiy qismlariga madaniy o‘simliklarni o‘rganish uchun ekspeditsiya tashkil etildi. Unga <b class="k">Nikolay Vavilov</b> rahbarlik qildi.</p><p class="rise" style="--d:0.39s">U 6000 dan ortiq madaniy o‘simlik namunasini to‘pladi. N. Vavilov <b class="k">Efiopiya</b> qimmatli <b class="k">qattiq bug‘doy</b> navining vatani ekanligini aniqladi.</p></div><div class="col" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr"><figure class="frame rise" style="" data-cap="Vasiliy Yunker"><div class="fi"><img src="img/yunker.jpg" style="object-fit:cover;object-position:top" alt=""></div><figcaption>Vasiliy Yunker</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Nikolay Vavilov"><div class="fi"><img src="img/vavilov.jpg" style="object-fit:cover;object-position:top" alt=""></div><figcaption>Nikolay Vavilov</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide gearbg" data-fx="gold"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Materikning o‘rganilishi — xronologiya</small><h2>Sayyohlar va olimlar</h2></div></div><div class="bd" style="grid-template-columns:1fr"><div class="tl wide">
+<div class="per rise" style="--d:.1s"><div class="ph"><img src="img/ibn.jpg" alt=""></div><span class="yr">XIV asr</span><h4>Ibn Battuta</h4><p>Shimoliy va sharqiy sohillar, Nil havzasi, Sahroi Kabir, Niger</p></div>
+<div class="per rise" style="--d:.2s"><div class="ph">⛵</div><span class="yr">1487-yil</span><h4>Bartolomeu Dias</h4><p>Yaxshi Umid burnigacha</p></div>
+<div class="per rise" style="--d:.3s"><div class="ph"><img src="img/gama.jpg" alt=""></div><span class="yr">1498-yil</span><h4>Vasko da Gama</h4><p>Hindistonga dengiz yo‘li</p></div>
+<div class="per rise" style="--d:.4s"><div class="ph"><img src="img/livingston.jpg" alt=""></div><span class="yr">XIX asr o‘rtasi</span><h4>David Livingston</h4><p>Viktoriya sharsharasi, Nyasa, Kalaxari</p></div>
+<div class="per rise" style="--d:.5s"><div class="ph">🧭</div><span class="yr">XIX asr</span><h4>G. M. Stenli</h4><p>Viktoriya ko‘li, Kagera, Kongo</p></div>
+<div class="per rise" style="--d:.6s"><div class="ph"><img src="img/yunker.jpg" alt=""></div><span class="yr">XIX asr oxiri</span><h4>Vasiliy Yunker</h4><p>Markaziy va Sharqiy Afrika</p></div>
+<div class="per rise" style="--d:.7s"><div class="ph"><img src="img/vavilov.jpg" alt=""></div><span class="yr">1926–1927</span><h4>Nikolay Vavilov</h4><p>Efiopiya — qattiq bug‘doy vatani</p></div></div></div></section>
+<section class="slide tslide " data-fx="embers" data-video="v/v06.mp4" data-vt="Afrika ikkiga bo‘linmoqda"><div class="bgw"><img class="kb" src="img/riftphoto.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.2. Geologik tuzilishi, relyefi va foydali qazilmalari</small><h2>Geologik tuzilishi</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s"><span class=h>Geologik tuzilishi.</span> Afrika zaminida qadimgi <b class="k">Gondvana</b> materigining bir qismi bo‘lgan eng qadimgi <b class="k">platforma</b> yotadi. Afrika Arabiston platformasidagi tog‘ jinslarining yoshi <b class="n">2–3 mlrd yil</b> va undan ham katta. Bu yerda qadimda hosil bo‘lgan tog‘ tizmalari Yerning tashqi kuchlari ta’sirida yemirilgan. Ichki kuchlar ta’sirida platformalarning ayrim qismlari ko‘tarilgan. Natijada, baland <b class="k">yassitog‘liklar</b> vujudga kelgan. Boshqa qismlari pasaygan va <b class="k">soyliklar</b> — Chad, Kongo, Kalaxari hosil bo‘lgan.</p><p class="rise" style="--d:0.27s">Materikning chekka shimoli-g‘arbida Yevrosiyo plitasi bilan to‘qnashgan chegarada balandligi <b class="n">4 165 m</b> ga yetadigan <b class="k">Atlas</b> burmali tog‘ tizmasi ko‘tarilgan.</p></div><div class="col" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr"><figure class="frame rise" style="" data-cap="43-rasm (B). Million yillardan keyingi taxminiy ko‘rinishi"><div class="fi"><img src="img/sat.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>43-rasm (B). Million yillardan keyingi taxminiy ko‘rinishi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="43-rasm (A). Buyuk Afrika yer yorig‘i"><div class="fi"><img src="img/riftmap.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>43-rasm (A). Buyuk Afrika yer yorig‘i</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide storm" data-fx="embers" data-video="v/v07.mp4" data-vt="Zilzila va vulqonlar"><div class="bgw"><img class="kb" src="img/riftphoto.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Geologik tuzilishi</small><h2>Buyuk Afrika yer yorig‘i</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Sharqiy Afrikada quruqlikdagi eng katta <b class="k">yer yorig‘i</b> joylashgan. Bu yer yorig‘i Qizil dengiz bo‘ylab Efiopiya yassitog‘ligi orqali o‘tib, Zambezi daryosining quyi qismigacha cho‘zilgan (43-rasm).</p><p class="rise" style="--d:0.27s">Bu yerda Afrika litosfera plitasining bir-biridan uzoqlashishi ro‘y bermoqda. Shu sababdan tez-tez <b class="k">zilzila</b> va <b class="k">vulqonlar</b> otilib turadi.</p><p class="rise" style="--d:0.39s">Kelajakda Buyuk Afrika yer yorig‘idan sharqdagi hududlar materik oroli tariqasida (Madagaskar oroli singari) Afrikadan ajralib ketishi mumkin. Sharqiy Afrika yassitog‘ligi palaxsalanib ko‘tarilgan <b class="k">gorst</b> va <b class="k">grabenlardan</b> iborat.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Yer yorig‘i — yer yuzasidagi ulkan yoriqlar"><div class="fi"><img src="img/riftphoto.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Yer yorig‘i — yer yuzasidagi ulkan yoriqlar</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><div class="card rise gorstcard" style="--d:.3s"><h3>Gorst va graben — jonli model</h3>
+<div class="blocks"><div class="blk dn"></div><div class="blk up"></div><div class="blk dn"></div><div class="blk up"></div><div class="blk dn"></div></div>
+<div class="blklab"><span>⬇ graben (uzilma)</span><span>⬆ gorst (irg‘itma)</span></div></div></div></div></section>
+<section class="slide tslide storm" data-fx="embers"><div class="bgw"><img class="kb" src="img/riftphoto.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Geologik tuzilishi va relyefi</small><h2>Gorst va graben</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="txt card" style="font-size:36px"><p class="rise" style="--d:0.15s">Grabenlarda chuqur ko‘llar hosil bo‘lgan. Tog‘lar, platolar <b class="k">magmatik</b> va <b class="k">metamorfik</b> tog‘ jinslaridan tuzilgan. Botiqlar, cho‘kmalar, pasttekislik va tekisliklar <b class="k">cho‘kindi jinslar</b> bilan qoplangan (44-rasm).</p><p class="rise" style="--d:0.27s"><span class=h>Relyefi.</span> Afrika hududi relyef xususiyatiga ko‘ra ikki qismga bo‘linadi: <b class="k">“past” Afrika</b> va <b class="k">“baland” Afrika</b>.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="44-rasm. a) Irg‘itma (gorst); b) Uzilma (graben)"><div class="fi"><img src="img/gorstfull.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>44-rasm. a) Irg‘itma (gorst); b) Uzilma (graben)</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><div class="card rise gorstcard g2" style="--d:.3s"><h3>Gorst va graben — jonli model</h3>
+<div class="blocks"><div class="blk dn"></div><div class="blk up"></div><div class="blk dn"></div><div class="blk up"></div><div class="blk dn"></div></div>
+<div class="blklab"><span>⬇ graben (uzilma)</span><span>⬆ gorst (irg‘itma)</span></div></div></div></div></section>
+<section class="slide tslide " data-fx="dust"><div class="bgw"><img class="kb" src="img/physmap.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Relyefi</small><h2>“Past” Afrika</h2></div></div><div class="bd" style="grid-template-columns:1.25fr .75fr"><div class="txt card" style="font-size:36px"><p class="rise" style="--d:0.15s">“Past” Afrika mutlaq balandligi 1 000 metrgacha bo‘lgan tekislik, plato va tog‘liklardan tashkil topgan. U <b class="k">Shimoliy va G‘arbiy Afrikani</b> o‘z ichiga oladi.</p><p class="rise" style="--d:0.27s">“Past” Afrikada qumli past-balandliklar ko‘p bo‘lgan <b class="k">Sahroi Kabir</b>, tekis va botqoqli <b class="k">Kongo botig‘i</b>, plato va tog‘lik (<b class="k">Darfur, Axaggar, Tibesti</b> va boshqa)lar asosiy relyef shakllaridir. Sahroi Kabirdan shimoli g‘arbda Atlas tog‘lari joylashgan. Uning eng baland joyi <b class="k">Tubkal cho‘qqisidir</b> (<b class="n">4 165 m</b>).</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="45-rasm. Afrika materigining tabiiy xaritasi"><div class="fi"><img src="img/physmap.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>45-rasm. Afrika materigining tabiiy xaritasi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide beamslide" data-fx="snow"><div class="bgw"><img class="kb" src="img/kenya.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Relyefi</small><h2>“Baland” Afrika</h2></div></div><div class="bd" style="grid-template-columns:1.3fr .7fr"><div class="txt card" style="font-size:28.5px"><p class="rise" style="--d:0.15s">“Baland” Afrika <b class="k">Sharqiy va Janubiy Afrikani</b> egallagan. “Baland” Afrikada Efiopiya tog‘ligi, Sharqiy Afrika yassitog‘ligi va Janubiy Afrika yassitog‘lari joylashgan. Bu yerda ham tog‘ oralig‘ida (Viktoriya, Kalaxari) va Sharqiy Afrika yer yorig‘i o‘tgan zonada chuqur cho‘kmalar bor. Sharqiy Afrika yassitog‘ligida <b class="k">Kilimanjaro</b> (<b class="n">5 895 m</b>), <b class="k">Keniya</b> (<b class="n">5 199 m</b>), <b class="k">Margerita</b> (<b class="n">5 109 m</b>) va boshqa tog‘ cho‘qqilari mavjud (46-rasm).</p><p class="rise" style="--d:0.27s">Sharqiy Afrika yassitog‘ligidan shimol tomonda Efiopiya tog‘ligi joylashgan. Plato, tog‘lik va yassitog‘likdan boshlanadigan yoki oqib o‘tadigan daryo vodiylarida relyefning dara, kanyon, sharshara (<b class="k">Viktoriya, Livingston, Stenli</b>), ostonalar ko‘p hosil bo‘lgan. Afrikaning eng baland (<b class="k">Kilimanjaro vulqoni</b>, <b class="n">5 895 m</b>) va eng past nuqtalari (Afar botig‘idagi <b class="k">Assal ko‘li</b>, <b class="n">–153 m</b>) ham “baland” Afrikada joylashgan. “Past” Afrikaning eng past joyi <b class="k">Kattara botig‘idir</b> (<b class="n">–133 m</b>) (47-rasm).</p><p class="rise" style="--d:0.39s">“Past” va “baland” Afrika o‘rtasidagi chegara <b class="k">Angola-Efiopiya</b> yo‘nalishidan o‘tadi.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="46-rasm. A) Kilimanjaro"><div class="fi"><img src="img/kili.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>46-rasm. A) Kilimanjaro</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="46-rasm. B) Keniya tog‘ cho‘qqilari"><div class="fi"><img src="img/kenya.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>46-rasm. B) Keniya tog‘ cho‘qqilari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="snow"><div class="bgw"><img class="kb" src="img/plato.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Relyefi</small><h2>Eng baland va eng past nuqtalar</h2></div></div><div class="bd" style="grid-template-columns:1.1fr .9fr"><div class="card rise"><h3>📏 Afrikaning eng baland cho‘qqilari</h3><div class="peaks" id="peaks"></div><div class="below"><div class="card stat"><div class="nn">−153 m</div><p>Assal ko‘li (Afar botig‘i) — eng past nuqta</p></div><div class="card stat"><div class="nn">−133 m</div><p>Kattara botig‘i — “past” Afrikaning eng past joyi</p></div></div></div><div class="col" style=""><figure class="frame rise" style="" data-cap="47-rasm. Sharqiy Afrika yassitog‘ligi"><div class="fi"><img src="img/plato.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>47-rasm. Sharqiy Afrika yassitog‘ligi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="crystal" data-video="v/v08.mp4" data-vt="Jazoir — neft va gaz"><div class="bgw"><img class="kb" src="img/physmap.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.2. Geologik tuzilishi, relyefi va foydali qazilmalari</small><h2>Foydali qazilmalari</h2></div></div><div class="bd" style="grid-template-columns:1.3fr .7fr"><div class="txt card" style="font-size:28.5px"><p class="rise" style="--d:0.15s"><span class=h>Foydali qazilmalari.</span> Afrika turli xil foydali qazilmalarga boy. Ularning ko‘pchiligi dunyodagi eng yirik konlar hisoblanadi. Afrikada <b class="k">magmatik jinslarning</b> keng tarqalishi rudali foydali qazilmalar ko‘p tarkib topishiga sabab bo‘lgan. Bular yer po‘stining yoriqlari orqali chuqurdan magma chiqib kelganligidan hosil bo‘lgan.</p><p class="rise" style="--d:0.27s">Foydali qazilmalar Janubiy va Sharqiy Afrikada yer yuzasiga yaqin yotadi. Bu yerda qadimgi kristall jinslar yer yuzasiga yaqin joylashgan.</p><p class="rise" style="--d:0.39s">Afrika <b class="k">olmos</b> qazib chiqarishda dunyoda birinchi o‘rinda turadi. Materikning pastroq, cho‘kindi jinslar ko‘pchilikni tashkil etadigan joylarida cho‘kindi yo‘l bilan hosil bo‘lgan foydali qazilmalar tarqalgan. Bular — <b class="k">toshko‘mir</b>, turli <b class="k">tuzlar</b>, <b class="k">marganes</b> rudalaridir. Shimoliy qismida va Gvineya qo‘ltig‘i bo‘ylarida <b class="k">neft</b> konlari bor. Afrika <b class="k">fosforitlarga</b> ham boy. Fosforitdan o‘g‘it ishlab chiqariladi. Asosiy konlar materik shimolida joylashgan.</p><p class="rise" style="--d:0.51s">Mashhur <b class="k">“mis mintaqasi”</b> Zambiya va Kongo Demokratik Respublikasi chegara zonasida joylashgan.</p></div><div class="col" style=""><div class="mins">
+<div class="card min rise" style="--d:.05s"><span class="e">💎</span><h4>Olmos</h4><p>Dunyoda 1-o‘rin</p></div>
+<div class="card min rise" style="--d:.15s"><span class="e">🥇</span><h4>Oltin</h4><p>Janubiy Afrika</p></div>
+<div class="card min rise" style="--d:.25s"><span class="e">🟠</span><h4>Mis</h4><p>Zambiya — KDR</p></div>
+<div class="card min rise" style="--d:.35s"><span class="e">🛢️</span><h4>Neft</h4><p>Shimol, Gvineya q.</p></div>
+<div class="card min rise" style="--d:.45s"><span class="e">🧪</span><h4>Fosforit</h4><p>O‘g‘it olinadi</p></div>
+<div class="card min rise" style="--d:.55s"><span class="e">⚫</span><h4>Toshko‘mir</h4><p>Cho‘kindi jinslar</p></div>
+<div class="card min rise" style="--d:.65s"><span class="e">⚙️</span><h4>Marganes</h4><p>Ruda konlari</p></div>
+<div class="card min rise" style="--d:.75s"><span class="e">🧂</span><h4>Tuzlar</h4><p>Turli tuzlar</p></div></div></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/physmap.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.2-mavzu bo‘yicha</small><h2>Tayanch tushunchalar</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="card rise"><h3>📌 Tayanch tushunchalar</h3><div class="chips"><span class="chip2 rise" style="--d:0.10s">Afrikaning geologik tuzilishi</span><span class="chip2 rise" style="--d:0.16s">platforma</span><span class="chip2 rise" style="--d:0.22s">gorst</span><span class="chip2 rise" style="--d:0.28s">graben</span><span class="chip2 rise" style="--d:0.34s">yer yorig‘i</span><span class="chip2 rise" style="--d:0.40s">relyef</span><span class="chip2 rise" style="--d:0.46s">yassitog‘lik</span><span class="chip2 rise" style="--d:0.52s">palaxsali tog‘lar</span><span class="chip2 rise" style="--d:0.58s">burmali tog‘lar</span><span class="chip2 rise" style="--d:0.64s">“past” Afrika</span><span class="chip2 rise" style="--d:0.70s">“baland” Afrika</span><span class="chip2 rise" style="--d:0.76s">foydali qazilmalar</span><span class="chip2 rise" style="--d:0.82s">tog‘ jinslari</span><span class="chip2 rise" style="--d:0.88s">mis mintaqasi</span></div></div><div class="col"><div class="card q rise" style="--d:.3s" onclick="this.classList.toggle('open')"><h4>❓ Yerning ichki va tashqi kuchlari Afrika materigi relyefiga qanday ta’sir ko‘rsatgan?</h4><div class="a">💡 Ichki kuchlar platformani ko‘tarib yassitog‘liklar, pasaytirib soyliklar (Chad, Kongo, Kalaxari) hosil qilgan; yer yorig‘i, gorst va grabenlar paydo bo‘lgan. Tashqi kuchlar qadimgi tog‘larni yemirgan.</div></div><div class="card q rise" style="--d:.45s" onclick="this.classList.toggle('open')"><h4>❓ Siz yashaydigan joyda qanday foydali qazilmalar uchraydi? Ulardan kundalik hayotda qanday foydalaniladi?</h4><div class="a">💡 O‘quvchilar o‘z hududi misolida javob beradi (gaz, neft, tuz, qurilish materiallari…).</div></div></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/physmap.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.5. Amaliy mashg‘ulot</small><h2>Amaliy mashg‘ulot — 1</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="card rise"><h3>🗺️ Topshiriq 1</h3><p class="tq">Quyidagi xaritada qaysi tabiiy geografik obyektlar ko‘rsatilganligini daftaringizga jadval shaklida yozing. Ulardan ixtiyoriy bittasining geografik o‘rnini tavsiflang.</p><table class="tb"><tr><th>№</th><th>Obyekt turi</th><th>Obyekt nomi (bosing)</th></tr><tr><td>1</td><td>daryo</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Nil</b></td></tr><tr><td>2</td><td>orol</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Madagaskar</b></td></tr><tr><td>3</td><td>ko‘l</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Viktoriya ko‘li</b></td></tr><tr><td>4</td><td>qo‘ltiq</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Gvineya qo‘ltig‘i</b></td></tr><tr><td>5</td><td>dengiz</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>O‘rta dengiz</b></td></tr><tr><td>6</td><td>cho‘l</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Kalaxari</b></td></tr></table><p class="tq small">5. Afrikaning ichki suvlarini yozuvsiz xaritaga tushiring.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Xaritadagi obyektlarni aniqlang"><div class="fi"><img src="img/nummap.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>Xaritadagi obyektlarni aniqlang</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="gold"><div class="bgw"><img class="kb" src="img/map42.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.5. Amaliy mashg‘ulot</small><h2>Amaliy mashg‘ulot — 2</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="card rise"><h3>🧭 Topshiriq 2</h3><p class="tq">Quyidagi rasmda harflar (A, B va D) va turli ranglar bilan qaysi sayyohlar bosib o‘tgan yo‘llar ko‘rsatilganligini aniqlang. Bu sayyohlar qaysi hududlarni o‘rganganligini daftaringizga yozing.</p><table class="tb"><tr><th>Harf</th><th>Sayyoh (bosing)</th></tr><tr><td>A</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Vasko da Gama — Afrikani aylanib, Hindistonga</b></td></tr><tr><td>B</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>David Livingston — Janubiy Afrika, Zambezi</b></td></tr><tr><td>D</td><td class="rv" onclick="this.classList.add('on')"><span>?</span><b>Ibn Battuta — Shimoliy Afrika, Sahroi Kabir, Niger</b></td></tr></table></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Sayyohlar yo‘llari: A, B, D"><div class="fi"><img src="img/routes.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>Sayyohlar yo‘llari: A, B, D</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/sat.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.5. Amaliy mashg‘ulot</small><h2>Amaliy mashg‘ulot — 3</h2></div></div><div class="bd" style="grid-template-columns:1.3fr .7fr"><div class="card rise"><h3>🌡️ Topshiriq 3</h3><p class="tq">Quyidagi diagrammalarda Afrikadagi <b class="k">Qohira</b> va <b class="k">Vindxuk</b> shaharlaridagi oylik o‘rtacha haroratlarning yil davomida o‘zgarishi ko‘rsatilgan. Har ikkala shahar ham tropik cho‘llar va chalacho‘llar tabiat zonasida joylashgan.</p><div class="card q" onclick="this.classList.toggle('open')"><h4>a) Nima sababdan iyun, iyul, avgust oylarida Vindxuk shahrida eng past o‘rtacha oylik harorat kuzatilgan, Qohira shahrida esa eng yuqori o‘rtacha oylik haroratlar qayd etilgan?</h4><div class="a">💡 Vindxuk janubiy yarimsharda — u yerda bu paytda qish; Qohira shimoliy yarimsharda — yoz.</div></div><div class="card q" onclick="this.classList.toggle('open')"><h4>b) Nima sababdan oktyabr, noyabr va dekabr oylarida Vindxuk shahrida eng yuqori oylik haroratlar kuzatilgan, Qohira shahrida esa o‘rtacha oylik haroratlar past ko‘rsatkichga ega?</h4><div class="a">💡 Bu oylarda janubiy yarimsharda yoz, shimoliy yarimsharda qish boshlanadi — fasllar teskari.</div></div></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Vindxuk va Qohira: oylik o‘rtacha haroratlar"><div class="fi"><img src="img/charts.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>Vindxuk va Qohira: oylik o‘rtacha haroratlar</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="fireflies" data-video="v/v09.mp4" data-vt="Afrika mintaqalari"><div class="bgw"><img class="kb" src="img/zones.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.6. Materikning tabiat zonalari</small><h2>Materikning tabiat zonalari</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrika materigida doimiy sernam <b class="k">ekvatorial o‘rmonlar</b> zonasi bir marta, fasliy (mavsumiy) nam o‘rmonlar, savannalar va siyrak o‘rmonlar, chalacho‘l va cho‘llar, qattiq bargli doimiy yashil o‘rmon va butazor zonalari <b class="k">ikki martadan</b> takrorlanadi. Tog‘larda <b class="k">balandlik mintaqalari</b> mavjud (58-rasm).</p><div class="chips" style="margin-top:14px"><span class="chip2">Tabiat zonalari</span><span class="chip2">sernam ekvatorial o‘rmonlar</span><span class="chip2">fasliy (mavsumiy) nam o‘rmonlar</span><span class="chip2">savannalar</span><span class="chip2">siyrak o‘rmonlar</span><span class="chip2">chalacho‘l va cho‘llar</span><span class="chip2">qattiq bargli doimiy yashil o‘rmonlar</span><span class="chip2">gamada</span><span class="chip2">samum</span></div></div><div class="col" style=""><figure class="frame rise" style="" data-cap="58-rasm. Afrikaning tabiat zonalari"><div class="fi"><img src="img/zones.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>58-rasm. Afrikaning tabiat zonalari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="flex:0 0 120px" data-cap="Shartli belgilar"><div class="fi"><img src="img/zleg.jpg" style="object-fit:contain;object-position:center" alt=""></div><figcaption>Shartli belgilar</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide rainy" data-fx="fireflies"><div class="bgw"><img class="kb" src="img/okapi.jpg" style="object-position:center 30%" alt=""></div><div class="rain"></div><div class="hd"><div class="vtitle"><small>Tabiat zonalari</small><h2>Ekvatorial o‘rmonlar zonasi</h2></div></div><div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s"><span class=h>Ekvatorial o‘rmonlar zonasi.</span> Bu zona ekvatorning har ikki tomonidan <b class="k">Kongo (Zair)</b> daryosi havzasida va <b class="k">Gvineya qo‘ltig‘i</b> bo‘yida ekvatordan shimolda joylashgan. Bu joyda ekvatorial o‘rmonlar zonasining shakllanishiga yil bo‘yi issiqlik va namlikning ko‘pligi sabab bo‘lgan. Shu sababli <b class="k">gileya</b> yoki <b class="k">yomg‘irli o‘rmonlar</b> deb ham atashadi. Bu zonada <b class="k">qizil-sariq ferralit</b> (lotincha “ferrum” — temir) tuproqlar tarqalgan. Tuproqning ona jinslari temir birikmalariga boy.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Okapi"><div class="fi"><img src="img/okapi.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Okapi</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Mitti begemot"><div class="fi"><img src="img/hippo.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Mitti begemot</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="fireflies"><div class="bgw"><img class="kb" src="img/okapi.jpg" style="object-position:center 30%" alt=""></div><div class="hd"><div class="vtitle"><small>Ekvatorial va mavsumiy nam o‘rmonlar</small><h2>O‘rmon hayvonlari</h2></div></div><div class="bd" style="grid-template-columns:1.1fr .9fr"><div class="txt card" style="font-size:30.5px"><p class="rise" style="--d:0.15s">Hayvonot dunyosi boy va xilma-xil. Ko‘p hayvonlar daraxtlarda yashaydi. Daraxtlarda qushlar, kemiruvchilar va hasharotlardan tashqari, ko‘pdan-ko‘p maymunlar — <b class="k">gorilla, shimpanze, martishka</b> va boshqalar yashaydi. Bu yerda popukquloq cho‘chqa, Afrika bug‘uchasi, <b class="k">mitti begemot</b> (bo‘yi <b class="n">80 cm</b> gacha), <b class="k">okapi</b>, o‘rmon fili, yirtqichlardan <b class="k">qoplon</b> va boshqalar yashaydi. O‘rmonning barcha qismlarida chumolilar tarqalgan. Qushlarning yuzlab turi, ilon, kaltakesaklar bor.</p><p class="rise" style="--d:0.27s">Ekvatorial o‘rmonlar zonasi <b class="k">mavsumiy (fasliy) nam o‘rmonlar</b> bilan almashadi. Tabiati ekvatorial nam o‘rmonlar tabiatiga o‘xshash, faqat qishda bir-ikki oy kam yog‘in yog‘adi, ba’zan yog‘insiz bo‘ladi. Lekin hayvonlar turi va soni ko‘payadi.</p></div><div class="col" style=""><div class="zoo rise" id="zoo1"></div></div></div></section>
+<section class="slide tslide " data-fx="dust" data-video="v/v10.mp4" data-vt="Afrika — tabiat va hayvonlar"><div class="bgw"><img class="kb" src="img/baobab.jpg" style="object-position:center 35%" alt=""></div><div class="hd"><div class="vtitle"><small>Tabiat zonalari</small><h2>Savannalar va siyrak o‘rmonlar</h2></div></div><div class="bd" style="grid-template-columns:1.4fr .6fr"><div class="txt card" style="font-size:28.5px"><p class="rise" style="--d:0.15s"><span class=h>Savannalar va siyrak o‘rmonlar.</span> Bu mintaqa uchun quruq va sernam fasllarning almashinishi, har yer-har yerda yakka daraxt yoki to‘p-to‘p daraxtlar, butazorlar, o‘tloqlarning ko‘pligi xosdir. Savannalar Afrika hududining <b class="n">40%</b> ga yaqin maydonini egallaydi.</p><p class="rise" style="--d:0.27s">Savannalarning tuproqlari va o‘simliklari yomg‘irli faslning qanchalik uzoq davom etishiga bog‘liq. Yomg‘irli davr 7–9 oy davom etadigan ekvatorial o‘rmonlarga yaqin joylarda <b class="k">qizil ferralit</b> tuproqlar hosil bo‘lgan. Bu yerlarda baland o‘tlarning bo‘yi <b class="n">3 m</b> ga etadi. O‘tloqlarning har yer-har yerida siyrak daraxtzorlar, bahaybat <b class="k">baobab</b>, yog‘ olinadigan palmalar, dum deb ataladigan palmalar o‘sadi. Yomg‘irli davr 6 oy davom etadigan joylarda <b class="k">qizil-qo‘ng‘ir</b> tuproqlar keng tarqalgan. Bu yerlar uncha baland bo‘lmagan o‘tloqlardan iborat, u yer-bu yerda soyabonsimon <b class="k">akatsiyalar</b> o‘sadi. Cho‘llashgan savannalarda quruq tikanli butalar va qattiq o‘tlar siyrak o‘sadi. Semiz tanali daraxtsimon o‘simlik — <b class="k">ixroj</b> ham uchraydi.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Baobab daraxti"><div class="fi"><img src="img/baobab.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Baobab daraxti</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="dust"><div class="bgw"><img class="kb" src="img/animals.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Savannalar</small><h2>Savanna hayvonlari</h2></div></div><div class="bd" style="grid-template-columns:1.1fr .9fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrika savannalari hayvonlarga boy. Dunyoning hech bir joyida Afrika savannalaridagidek yirik hayvonlar to‘planmagan. Bu yerda xilma-xil <b class="k">antilopalar</b> (ularning <b class="n">40 ta</b> turi bor), <b class="k">zebra, jirafa, fil</b> (balandligi <b class="n">4 m</b>, og‘irligi <b class="n">12 t</b> gacha), buyvol, karkidon, begemot, pavian (maymun turi), <b class="k">sher</b>, qoplon, sirtlon, chiyabo‘ri, gepard, suvda timsohlar (<b class="k">Nil timsohi</b> <b class="n">5–6 m</b> uzunlikka ega) uchraydi. Qushlardan eng kichik nektarxo‘r, kotib qush, eng katta <b class="k">Afrika tuyaqushi</b> (bo‘yi <b class="n">2,8 m</b>, og‘irligi <b class="n">90 kg</b> gacha), marabu, mirzaqush va boshqalar ko‘p tarqalgan (59-rasm).</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="59-rasm. Afrika hayvonlari"><div class="fi"><img src="img/animals.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>59-rasm. Afrika hayvonlari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="dust"><div class="bgw"><img class="kb" src="img/animals.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Hayvonni bosing — fakt chiqadi</small><h2>Savanna hayvonlari bilan tanishing</h2></div></div><div class="bd" style="grid-template-columns:1fr"><div class="zoo rise" id="zoo2"></div></div></section>
+<section class="slide tslide " data-fx="sand" data-video="v/v12.mp4" data-vt="Sahroi Kabir"><div class="bgw desertbg"><div class="desert"></div><div class="stars"></div><div class="sunm"></div><div class="dune d1"></div><div class="dune d2"></div><div class="camel"><span>🐪</span></div><div class="camel" style="animation-delay:-3.5s;font-size:62px"><span>🐪</span></div><div class="temp"></div></div><div class="hd"><div class="vtitle"><small>Tropik cho‘llar va subtropiklar tabiati</small><h2>Tropik cho‘llar</h2></div></div><div class="bd" style="grid-template-columns:1.45fr .55fr"><div class="txt card" style="font-size:28.5px"><p class="rise" style="--d:0.15s"><span class=h>Tropik cho‘llar va subtropiklar tabiati.</span> Cho‘l — yog‘in miqdori juda kam, o‘simliklari siyrak, ba’zi joylarda yo‘q bo‘lgan tabiat zonasi.</p><p class="rise" style="--d:0.27s">Afrikada cho‘llar juda katta maydonni egallaydi. Materikning shimoliy qismida Yerdagi eng katta cho‘l — <b class="k">Sahroi Kabir</b> joylashgan. Bu yerda katta maydonni toshloq cho‘llar tashkil etadi, shu bilan birga gilli va qumli cho‘llar bor. Toshloq cho‘llarni mahalliy aholi <b class="k">gamada</b> deb ataydi. Tropik cho‘llarda tun bilan kun harorati keskin o‘zgaradi. Masalan, kunduzi havo harorati <b class="n">40–50°C</b> bo‘lsa, kechasi <b class="n">0 °C</b> ga pasayishi mumkin. Buning natijasida cho‘ldagi tog‘larda tog‘ jinslarida darz va yoriqlar paydo bo‘lib, kuchli parchalanishlar kuzatiladi. Qumli cho‘llarda qum, chang-to‘zonli quruq va issiq <b class="k">samum</b> shamoli kuchli esadi.</p><p class="rise" style="--d:0.39s">Cho‘llarda chirindisiz <b class="k">qumoq cho‘l</b> tuproqlari, pastlik joylarda <b class="k">sho‘rxok</b> tuproqlar, vohalarda madaniy tuproqlar shakllangan.</p></div><div class="col" style=""><div class="card stat rise"><div class="nn">+40…50°C</div><p>Kunduzi</p></div><div class="card stat rise" style="--d:.2s"><div class="nn" style="color:#9fd3ff">0°C</div><p>Kechasi</p></div></div></div></section>
+<section class="slide tslide " data-fx="sand" data-video="v/v11.mp4" data-vt="Yashil Sahroi Kabir"><div class="bgw desertbg"><div class="desert"></div><div class="stars"></div><div class="sunm"></div><div class="dune d1"></div><div class="dune d2"></div><div class="camel"><span>🐪</span></div><div class="camel" style="animation-delay:-3.5s;font-size:62px"><span>🐪</span></div><div class="temp"></div></div><div class="hd"><div class="vtitle"><small>Tropik cho‘llar</small><h2>Sahroi Kabir: o‘simlik va hayvonlar</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Sahroi Kabirda o‘simliklar juda siyrak. Ba’zi joylarda, ayniqsa, cho‘lning markaziy qismida o‘simlik butunlay yo‘q. Har yer-har yerda to‘p-to‘p o‘t va tikanli butalar uchraydi. Faqat vohalarda o‘simliklar ko‘p. Vohalarda eng keng tarqalgan o‘simlik — <b class="k">xurmo</b>.</p><p class="rise" style="--d:0.27s">Sahroi Kabir hayvonlari cho‘l iqlimiga moslashgan. Masalan, antilopalar suv va ozuqa qidirib, uzoq joylarga borib yuradi. <b class="k">Kaltakesak, toshbaqa va ilonlar</b> uzoq vaqt suvsiz yashashi mumkin. Yirtqichlardan <b class="k">gienalar</b> (chipor sirtlon), chiyabo‘rilar, tulkilar uchraydi.</p></div><div class="col" style=""><div class="zoo rise" id="zoo3"></div></div></div></section>
+<section class="slide tslide " data-fx="sand"><div class="bgw"><img class="kb" src="img/velv.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Tropik cho‘llar</small><h2>Namib cho‘li va velvichiya</h2></div></div><div class="bd" style="grid-template-columns:1.25fr .75fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s"><b class="k">Namib</b> cho‘lida ajoyib <b class="k">velvichiya</b> o‘simligi o‘sadi. Uning tanasi yer yuzidan bor-yo‘g‘i <b class="n">50 cm</b> ko‘tariladi. Barglarining uzunligi esa <b class="n">3 m</b> ga etadi. Barglar o‘simlik tanasidan to‘xtovsiz o‘saveradi, uchlari esa qurib boraveradi. Uning yoshi 150 yildan ham oshishi mumkin (60-rasm).</p><p class="rise" style="--d:0.27s">Namib cho‘lining shimol va sharq tomonlarida chalacho‘llar boshlanadi. Bu yerlarda yostiqsimon o‘simliklar, <b class="k">molochay, aloe</b>, yovvoyi sersuv <b class="k">tarvuzlar</b> o‘sadi. Tarvuzlarni hayvonlar va aholi suv o‘rnida iste’mol qiladi.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="60-rasm. Velvichiya"><div class="fi"><img src="img/velv.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>60-rasm. Velvichiya</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Velvichiya guli"><div class="fi"><img src="img/velvf.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Velvichiya guli</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Velvichiya tarqalgan hudud"><div class="fi"><img src="img/namibmap.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Velvichiya tarqalgan hudud</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="leaves"><div class="bgw"><img class="kb" src="img/baobab.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Subtropiklar tabiati</small><h2>Subtropik mintaqa</h2></div></div><div class="bd" style="grid-template-columns:1.15fr .85fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Afrikaning shimoli-g‘arbiy va janubi-g‘arbiy qismlarida <b class="k">subtropik mintaqa</b> joylashgan bo‘lib, qattiq bargli doimiy yashil o‘rmonlar va butazorlardan tashkil topgan.</p><p class="rise" style="--d:0.27s">Shimoliy subtropikdagi <b class="k">Atlas tog‘larining</b> <b class="n">3 000 m</b> dan tepa qismida qishda havo sovib (<b class="n">–10…–17 °C</b> gacha), qor yog‘adi. Ba’zi joylarda qorning qalinligi <b class="n">2 m</b> ga yetadi. Sohil va tog‘ yonbag‘irlarida <b class="k">makvis</b> (buta va o‘tlardan iborat chakalakzorlar), zaytun, pakana palma, probka emani (dub) o‘rmonlari, yuqoriroqda yirik <b class="k">atlas kedri</b>, tis (butasimon daraxt), yana balandroqda (<b class="n">1 500–3 000 m</b>) keng bargli o‘rmonlar, undan balandda Alp o‘tloqlari joylashgan.</p></div><div class="col" style=""><div class="card rise plcard"><h3>🌿 O‘simliklar</h3><div class="plg" id="plants"></div></div></div></div></section>
+<section class="slide tslide " data-fx="leaves"><div class="bgw"><img class="kb" src="img/baobab.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Subtropiklar tabiati</small><h2>Subtropiklarning hayvonlari</h2></div></div><div class="bd" style="grid-template-columns:1.3fr .7fr"><div class="txt card" style="font-size:33px"><p class="rise" style="--d:0.15s">Bu zonada hayvon turlari ko‘p. Kattaligi quyonday keladigan <b class="k">o‘txo‘r daman</b> tog‘larda to‘da bo‘lib yashaydi. Uni ovlashadi va go‘shtini iste’mol qilishadi. Yana turli kemiruvchilar, <b class="k">dumsiz makaka</b>, yirtqichlardan chiyabo‘ri, yovvoyi mushuk, qoplon, sirtlon, sudralib yuruvchilardan kaltakesak, ilon, echkemar, toshbaqalar yashaydi. Ba’zan <b class="k">chigirtkalar</b> bosqinidan qishloq xo‘jaligi ancha zarar ko‘radi.</p><p class="rise" style="--d:0.27s">Janubiy Afrika subtropik mintaqasi landshaftida <b class="k">kiparis, kap zaytuni, kumush daraxti, kedr</b>, Afrika yong‘og‘i, kap kashtani, sariq daraxt va turli o‘t o‘simliklar o‘sadi.</p></div><div class="col" style=""><figure class="frame rise" style="" data-cap="Afrika daraxtlari"><div class="fi"><img src="img/baobab.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Afrika daraxtlari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure><figure class="frame rise" style="" data-cap="Tog‘ yonbag‘irlari"><div class="fi"><img src="img/kenya.jpg" style="object-fit:cover;object-position:center" alt=""></div><figcaption>Tog‘ yonbag‘irlari</figcaption><i class="sp s0">✦</i><i class="sp s1">✦</i><i class="sp s2">✦</i><i class="sp s3">✦</i></figure></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/zones.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.6-mavzu bo‘yicha</small><h2>Savol va topshiriqlar</h2></div></div><div class="bd" style="grid-template-columns:1fr"><div class="qz2"><div class="card q rise" style="--d:0.00s" onclick="this.classList.toggle('open')"><h4><span class="qn">1</span>Nima uchun ekvatorial o‘rmonlar zonasida qizil ferralit tuproqlar shakllangan? Bu tuproq sizning yashash joyingizdagi tuproqdan qanday farqlarga ega mavjud?</h4><div class="a">💡 Yil bo‘yi issiq va sernam: chirindi tez yuviladi, temir birikmalari to‘planadi — tuproq qizil rangda.</div></div><div class="card q rise" style="--d:0.08s" onclick="this.classList.toggle('open')"><h4><span class="qn">2</span>Havo harorati va yog‘inlar Afrika tabiat zonalari chegaralarining o‘zgarishiga qanday ta’sir ko‘rsatgan? Fikrlaringizni izohlang.</h4><div class="a">💡 Yog‘in kamaygan sari o‘rmonlar savanna, savanna esa chalacho‘l va cho‘lga almashadi.</div></div><div class="card q rise" style="--d:0.16s" onclick="this.classList.toggle('open')"><h4><span class="qn">3</span>Jadvalni to‘ldiring: Tabiat zonalari — Tuproqlari — O‘simliklari — Hayvonot dunyosi.</h4><div class="a">💡 Masalan: Savanna — qizil ferralit / qizil-qo‘ng‘ir — baobab, akatsiya — fil, jirafa, zebra, sher.</div></div><div class="card q rise" style="--d:0.24s" onclick="this.classList.toggle('open')"><h4><span class="qn">4</span>Afrika va Janubiy Amerika materiklarini xaritadan kuzating. Har ikkala materik hamma tomondan suv bilan o‘ralgan bo‘lsa-da, ammo Afrikaning shimolida Sahroi Kabir cho‘li joylashgan, Janubiy Amerikaning shimolida esa nam ekvatorial o‘rmonlar o‘sib yotibdi. Bunga sabab nima?</h4><div class="a">💡 Afrikaning keng shimoliy qismi tropik kengliklarda — quruq passat havosi ustun; Janubiy Amerikaning shimolidan ekvator o‘tadi.</div></div><div class="card q rise" style="--d:0.32s" onclick="this.classList.toggle('open')"><h4><span class="qn">5</span>Savannalarning asosiy xususiyati nimalardan iborat?</h4><div class="a">💡 Quruq va sernam fasllar almashinadi; o‘tloqlar, yakka daraxtlar, yirik hayvonlar ko‘p.</div></div><div class="card q rise" style="--d:0.40s" onclick="this.classList.toggle('open')"><h4><span class="qn">6</span>Afrika tabiat zonalarini yozuvsiz xaritaga tushiring.</h4><div class="a">💡 Amaliy topshiriq — daftarda bajariladi.</div></div></div></div></section>
+<section class="slide tslide " data-fx="gold" data-video="v/v13.mp4" data-vt="Sahroi Kabir kengaymoqda"><div class="bgw"><img class="kb" src="img/zones.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>5.7. Tabiiy geografik o‘lkalari. Materik tabiatiga insonning ta’siri</small><h2>Tabiiy geografik o‘lkalari</h2></div></div><div class="bd" style="grid-template-columns:1fr 1fr"><div class="txt card" style="font-size:36px"><p class="rise" style="--d:0.15s">Afrika tabiiy sharoitiga ko‘ra <b class="k">to‘rtta</b> yirik tabiiy geografik o‘lkaga ajratiladi. Ular <b class="k">Shimoliy, Markaziy, Sharqiy va Janubiy Afrika</b> deb ataladi (61-rasm).</p></div><div class="col" style=""><div class="regs">
+<div class="card reg rise" style="--d:.1s;--c:#ffb347"><h4>🏜️ Shimoliy Afrika</h4><p>Sahroi Kabir, Atlas tog‘lari, O‘rta dengiz sohillari</p></div>
+<div class="card reg rise" style="--d:.2s;--c:#6ed37a"><h4>🌳 Markaziy Afrika</h4><p>Kongo botig‘i, ekvatorial o‘rmonlar</p></div>
+<div class="card reg rise" style="--d:.3s;--c:#4fc3ff"><h4>🏔️ Sharqiy Afrika</h4><p>Efiopiya tog‘ligi, yer yorig‘i, Kilimanjaro</p></div>
+<div class="card reg rise" style="--d:.4s;--c:#c77dff"><h4>🦁 Janubiy Afrika</h4><p>Kalaxari, Namib, Janubiy Afrika yassitog‘lari</p></div></div></div></div></section>
+<section class="slide tslide " data-fx="stars"><div class="bgw"><img class="kb" src="img/map51.jpg" style="object-position:center" alt=""></div><div class="hd"><div class="vtitle"><small>Mustahkamlash</small><h2>O‘zingizni sinang!</h2></div></div><div class="bd" style="grid-template-columns:1fr"><div class="qz" id="quiz"></div></div></section><section class="slide final" data-fx="phoenix" data-video="v/v14.mp4" data-vt="Sahroi Kabir changi">
+  <div class="hero">
+    <img class="bgimg" src="img/animals.jpg" alt="">
+    <div class="sunball"></div>
+    <div class="arcane" data-arc="900" style="left:510px;top:120px"></div>
+    <div class="beam"></div><div class="burst" style="left:945px;top:560px"></div>
+    <span class="chip rise">TAQDIMOT YAKUNI</span>
+    <h1 class="rise fire" style="--d:.2s">E’tiboringiz uchun rahmat!</h1>
+    <div class="author rise" style="--d:.6s"><small>TAYYORLADI</small><b>Safarboyev Husanjon</b></div>
+    <button class="go filmbtn rise" style="--d:1s" onclick="event.stopPropagation();openFilm(this)">🎬 Afrika haqida multfilm — ovozli</button>
+    <div class="ground"></div>
+    <div class="parade" id="parade2"></div>
+  </div>
+</section>
+<div id="intro"><div id="gate"><div class="gbook">📖</div><button>▶ Boshlash</button><small>🔊 ovozni yoqib qo‘ying</small></div><button class="iskip">O‘tkazib yuborish ⏭</button>
+<div class="ph1"><div class="logo"><div class="l1"><span style="animation-delay:0.00s">G</span><span style="animation-delay:0.07s">E</span><span style="animation-delay:0.14s">O</span><span style="animation-delay:0.21s">G</span><span style="animation-delay:0.28s">R</span><span style="animation-delay:0.35s">A</span><span style="animation-delay:0.42s">F</span><span style="animation-delay:0.49s">I</span><span style="animation-delay:0.56s">Y</span><span style="animation-delay:0.63s">A</span></div><div class="l2"><span style="animation-delay:0.70s">A</span><span style="animation-delay:0.77s">F</span><span style="animation-delay:0.84s">R</span><span style="animation-delay:0.91s">I</span><span style="animation-delay:0.98s">K</span><span style="animation-delay:1.05s">A</span></div></div><div class="swoosh"></div><div class="logo-sub">7-SINF · V BOB · AFRIKA MATERIGI</div></div>
+<div class="ph2" style="transition:opacity .3s"><div class="starsI"></div><div class="neb b"></div><div class="neb o"></div></div>
+<div class="ph3" style="transition:opacity .4s"><div class="wallarch" style="left:140px"></div><div class="wallarch" style="left:520px;height:520px"></div><div class="wallarch" style="right:520px;height:520px"></div><div class="wallarch" style="right:140px"></div>
+<div class="floor"></div><div class="candle" style="left:180px;--h:140px;--b:190px;--w:30px;transform:scale(1)"></div><div class="candle" style="left:300px;--h:90px;--b:170px;--w:24px;transform:scale(0.9)"></div><div class="candle" style="left:1580px;--h:150px;--b:190px;--w:30px;transform:scale(1)"></div><div class="candle" style="left:1700px;--h:100px;--b:175px;--w:24px;transform:scale(0.9)"></div><div class="candle" style="left:560px;--h:70px;--b:120px;--w:20px;transform:scale(0.8)"></div><div class="candle" style="left:1330px;--h:80px;--b:125px;--w:22px;transform:scale(0.8)"></div><div class="candle" style="left:80px;--h:200px;--b:250px;--w:34px;transform:scale(1.1)"></div><div class="candle" style="left:1810px;--h:190px;--b:245px;--w:34px;transform:scale(1.1)"></div><div class="fog" style="left:-200px"></div><div class="fog" style="right:-300px;animation-direction:alternate-reverse"></div>
+<div class="booklight"></div><div class="rb-wrap" id="rbw"><div class="rbook" id="rbook">
+<div class="rb-board l"></div><div class="rb-board"></div><div class="rb-stack"></div>
+<div class="rb-page"><img src="img/bk_map.jpg" alt=""></div>
+<div class="leaf" style="z-index:3"><div class="face front"><img src="img/pg_c.jpg" alt=""></div><div class="face back"><img src="img/bk_page.jpg" alt=""></div></div>
+<div class="leaf" style="z-index:4"><div class="face front"><img src="img/pg_a.jpg" alt=""></div><div class="face back"><img src="img/pg_b.jpg" alt=""></div></div>
+<div class="leaf cov" style="z-index:5"><div class="face front"><img src="img/cv_front.jpg" alt=""></div><div class="face back"><img src="img/bk_cover.jpg" alt=""></div></div>
+</div></div><div class="book"><div class="cover"></div><div class="pg bpl"><img src="img/bk_map.jpg" alt="" decoding="sync"></div><div class="pg bpr"><img src="img/bk_page.jpg" alt="" decoding="sync"></div><div class="lid"><img src="img/bk_cover.jpg" alt="" decoding="sync"></div></div>
+<div class="mavzu">✦ MAVZU ✦</div><div class="ftitle"><div class="ln"><span style="animation-delay:0.00s">A</span><span style="animation-delay:0.12s">F</span><span style="animation-delay:0.24s">R</span><span style="animation-delay:0.36s">I</span><span style="animation-delay:0.48s">K</span><span style="animation-delay:0.60s">A</span></div><div class="ln ln2"><span style="animation-delay:0.80s">M</span><span style="animation-delay:0.90s">A</span><span style="animation-delay:1.00s">T</span><span style="animation-delay:1.10s">E</span><span style="animation-delay:1.20s">R</span><span style="animation-delay:1.30s">I</span><span style="animation-delay:1.40s">G</span><span style="animation-delay:1.50s">I</span></div></div><div class="isub">GEOGRAFIYA · 7-SINF · V BOB</div><div class="teacher"><span>Teacher:</span> Safarboyev Husanjon</div>
+<button class="istart">▶ Darsni boshlash</button></div>
+<canvas></canvas><div class="flash"></div></div>
+</div>
+<div id="kz"><div id="kzs"><div class="kbar"></div><div class="kcount"></div><div class="kctl"><button onclick="kzStep(-1)">◀</button><button id="kzp" onclick="kzToggle()">⏵</button><button onclick="kzStep(1)">▶</button><button onclick="kzClose()">✕</button></div><div class="kswipe">👆 Barmoq bilan suring: ◀ oldingi · keyingi ▶</div></div></div>
+<div id="lbdim"></div><div id="lb"></div><div id="lbcap"></div>
+<div id="vxdim" onclick="closeV()"></div>
+<div id="vx"><div id="vxmedia"></div><div id="vxflash"></div><button id="vxclose" onclick="closeV()">✕</button></div>
+<div id="nav">
+  <button onclick="go(cur-1)" aria-label="Oldingi">◀</button>
+  <span id="count">1/14</span>
+  <button id="play" onclick="togglePlay()" aria-label="Avto">⏵</button>
+  <button onclick="kzOpen(cur)" aria-label="Ko‘rgazma">🎞</button>
+  <button onclick="fs()" aria-label="To‘liq ekran">⛶</button>
+  <button onclick="go(cur+1)" aria-label="Keyingi">▶</button>
+</div>
+
+<script>
+
+/* ---------- data ---------- */
+const P=(lo,la)=>[((lo+19)*8+10).toFixed(1),((38-la)*8+10).toFixed(1)];
+const path=(pts,close)=>'M'+pts.map(p=>P(p[0],p[1]).join(',')).join('L')+(close?'Z':'');
+const AFR=[[-5.8,35.8],[-2.2,35.1],[-0.6,35.7],[3.0,36.8],[6.5,37.0],[7.8,36.9],[9.8,37.3],[10.2,36.8],[11.0,37.0],[10.5,36.2],[10.8,34.7],[10.1,33.9],[11.0,33.5],[13.2,32.9],[15.1,32.4],[16.6,31.2],[18.5,30.3],[20.0,31.0],[20.0,32.1],[22.6,32.8],[24.0,32.1],[25.2,31.6],[27.5,31.2],[29.9,31.2],[31.5,31.5],[32.3,31.3],[32.5,29.9],[32.6,29.5],[33.8,27.2],[35.0,25.0],[35.8,23.9],[36.9,22.0],[37.2,19.6],[38.5,18.0],[39.4,15.6],[41.5,13.9],[42.7,13.0],[43.3,11.9],[43.1,11.6],[45.0,10.4],[48.0,11.2],[51.3,11.8],[51.4,10.4],[50.8,9.5],[49.5,7.0],[48.5,5.3],[47.0,3.5],[45.3,2.0],[43.5,0.7],[42.5,-0.4],[40.9,-2.3],[39.7,-4.0],[39.0,-5.5],[39.3,-6.8],[39.5,-8.9],[40.5,-10.7],[40.6,-14.5],[39.5,-16.5],[36.9,-17.9],[34.8,-19.8],[35.4,-22.0],[35.5,-23.8],[34.0,-24.8],[32.6,-25.9],[32.4,-28.5],[31.0,-29.9],[29.5,-31.5],[27.9,-33.0],[25.6,-34.0],[22.0,-34.2],[20.0,-34.8],[18.5,-34.4],[18.4,-33.9],[17.9,-33.0],[17.3,-30.5],[16.5,-28.6],[15.2,-26.6],[14.5,-22.9],[13.0,-20.0],[11.8,-17.2],[12.1,-15.2],[13.4,-12.6],[13.8,-11.0],[13.2,-8.8],[12.3,-6.0],[11.8,-4.8],[10.5,-3.0],[9.3,-1.0],[9.4,0.4],[9.6,2.5],[9.7,4.0],[8.3,4.9],[7.0,4.4],[6.0,4.3],[5.0,5.5],[3.4,6.4],[1.5,6.2],[-0.2,5.6],[-2.1,4.7],[-4.0,5.3],[-6.0,4.6],[-7.7,4.4],[-9.5,5.4],[-10.8,6.3],[-12.5,7.5],[-13.2,8.5],[-13.7,9.5],[-15.0,10.9],[-15.6,11.9],[-16.8,13.5],[-17.5,14.7],[-16.9,15.5],[-16.5,16.5],[-16.0,18.1],[-16.3,19.5],[-17.0,20.8],[-16.6,22.0],[-16.0,23.5],[-15.0,24.8],[-14.5,26.1],[-12.9,27.9],[-11.0,28.7],[-9.6,30.4],[-9.8,31.5],[-9.0,32.5],[-7.6,33.6],[-6.8,34.0],[-6.2,35.2]];
+const MAD=[[49.3,-12.0],[50.3,-14.5],[50.5,-15.5],[49.4,-17.5],[48.0,-21.5],[47.1,-24.9],[45.2,-25.5],[43.7,-23.5],[43.3,-21.5],[44.4,-19.5],[44.0,-17.0],[46.3,-15.7],[47.9,-13.5]];
+const RIV=[
+ {n:'Nil',len:6671,lab:[31.8,24],pts:[[33.0,-0.5],[33.2,0.8],[32.3,1.8],[31.2,2.6],[31.6,4.8],[31.0,7.0],[31.6,9.5],[32.2,12.5],[32.5,15.6],[34.0,17.7],[33.3,19.5],[31.9,18.6],[30.5,19.2],[31.3,21.8],[32.9,24.1],[32.6,25.7],[31.2,27.2],[31.2,30.0],[31.0,31.4]]},
+ {n:'Kongo',len:4700,lab:[20.5,1.6],pts:[[26.2,-10.8],[27.0,-7.0],[26.0,-4.0],[25.9,-2.9],[25.2,0.5],[23.0,1.6],[20.5,1.8],[18.3,0.0],[16.5,-2.0],[15.3,-4.3],[12.3,-6.0]]},
+ {n:'Niger',len:4160,lab:[-3,18.2],pts:[[-10.5,9.2],[-8.0,12.6],[-6.3,13.4],[-4.2,14.5],[-3.0,16.8],[0.0,16.3],[2.1,13.5],[3.5,11.5],[5.5,9.2],[6.7,7.8],[6.5,5.5],[6.0,4.4]]},
+ {n:'Zambezi',len:2660,lab:[23,-19.5],pts:[[24.0,-11.3],[22.8,-14.0],[23.5,-17.0],[25.9,-17.9],[28.5,-16.5],[30.5,-15.6],[32.0,-15.6],[33.6,-16.2],[35.2,-17.6],[36.3,-18.8]]},
+ {n:'Oranj',len:1860,lab:[19,-30.5],pts:[[29.0,-29.5],[27.0,-30.2],[25.0,-29.5],[22.5,-28.8],[21.0,-28.5],[18.5,-28.8],[16.5,-28.6]]},
+ {n:'Limpopo',len:1600,lab:[30.5,-21],pts:[[27.5,-24.5],[28.5,-23.0],[29.5,-22.2],[31.5,-22.4],[32.5,-24.0],[33.6,-25.2]]},
+ {n:'Moviy Nil',len:0,pts:[[37.3,12.0],[36.5,11.0],[35.0,11.5],[33.8,13.5],[32.5,15.6]]}
+];
+const LAKES=[{n:'Viktoriya',c:[33,-1],rx:16,ry:16},{n:'Tanganika',c:[29.8,-6.0],rx:4,ry:22,r:-15},{n:'Nyasa',c:[34.6,-12.0],rx:3.5,ry:16,r:-8},{n:'Chad',c:[14.4,13.2],rx:8,ry:7}];
+
+function baseMap(svg,opts){
+  const g=[];
+  g.push('<defs><radialGradient id="landg" cx="45%" cy="40%"><stop offset="0" stop-color="#7fc46a"/><stop offset=".45" stop-color="#e9c46a"/><stop offset=".8" stop-color="#d9893b"/><stop offset="1" stop-color="#a65d22"/></radialGradient><linearGradient id="seag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3c5c"/><stop offset="1" stop-color="#062236"/></linearGradient></defs>');
+  g.push('<rect width="588" height="612" rx="12" fill="url(#seag)"/>');
+  for(let lo=-10;lo<=50;lo+=10){const [x]=P(lo,0);g.push(`<line class="gridl" x1="${x}" y1="0" x2="${x}" y2="612"/>`)}
+  for(let la=-30;la<=30;la+=10){const [,y]=P(0,la);g.push(`<line class="gridl" x1="0" y1="${y}" x2="588" y2="${y}"/>`)}
+  g.push(`<path class="land2" d="${path(AFR,1)}"/><path class="land2" d="${path(MAD,1)}"/>`);
+  return g;
+}
+function map1(){
+  const g=baseMap();
+  const [,ye]=P(0,0),[,yn]=P(0,23.44),[,ys]=P(0,-23.44),[xm]=P(0,0);
+  g.push(`<line class="eq" x1="0" y1="${ye}" x2="588" y2="${ye}"/><text class="ptl s" x="8" y="${+ye-5}" fill="#ff8a80">Ekvator 0°</text>`);
+  g.push(`<line class="trop" x1="0" y1="${yn}" x2="588" y2="${yn}"/><text class="ptl s" x="8" y="${+yn-5}">Shimoliy tropik</text>`);
+  g.push(`<line class="trop" x1="0" y1="${ys}" x2="588" y2="${ys}"/><text class="ptl s" x="8" y="${+ys-5}">Janubiy tropik</text>`);
+  g.push(`<line class="mer" x1="${xm}" y1="0" x2="${xm}" y2="612"/><text class="ptl s" x="${+xm+4}" y="600">Bosh meridian 0°</text>`);
+  const pts=[['Ben Sekka b.',9.8,37.3,8,-8],['Igna b.',20.0,-34.8,-20,20],['Almadi b.',-17.5,14.7,8,-10],['Ras Xafun b.',51.4,10.4,-90,-12]];
+  pts.forEach(([n,lo,la,dx,dy],i)=>{const [x,y]=P(lo,la);g.push(`<circle class="ring" cx="${x}" cy="${y}" r="7" style="animation-delay:${i*.4}s"/><circle class="dot" cx="${x}" cy="${y}" r="6"/><text class="ptl" x="${+x+dx}" y="${+y+dy}">${n}</text>`)});
+  const labs=[['AFRIKA',14,20,'font-size:22px;letter-spacing:6px'],['Madagaskar',41,-27],['Atlantika okeani',-17,-8],['Hind okeani',41,-35],["O‘rta dengiz",14,35.5],['Qizil d.',36,23],['Gibraltar',-12,38.3],['Suvaysh',32.8,33.6],['Somali y.',44,6.5],['Gvineya q.',-2,2.8]];
+  labs.forEach(([t,lo,la,st])=>{const [x,y]=P(lo,la);g.push(`<text class="ptl s" x="${x}" y="${y}" style="${st||''}">${t}</text>`)});
+  document.getElementById('map1').innerHTML=g.join('');
+}
+function map2(){
+  const g=baseMap();
+  LAKES.forEach(l=>{const [x,y]=P(...l.c);g.push(`<ellipse class="lake" cx="${x}" cy="${y}" rx="${l.rx}" ry="${l.ry}" transform="rotate(${l.r||0} ${x} ${y})"/>`)});
+  RIV.forEach((r,i)=>{const d=path(r.pts);g.push(`<path class="riv" pathLength="1" d="${d}" style="--d:${i*.5}s"/><path class="flow" pathLength="1" d="${d}"/>`);
+    if(r.lab){const [x,y]=P(...r.lab);g.push(`<text class="ptl" x="${x}" y="${y}" fill="#bfeaff">${r.n}</text>`)}});
+  [['Viktoriya k.',36,-0.5],['Tanganika k.',21.5,-7],['Nyasa k.',36.5,-12],['Chad k.',9,16.5],['Viktoriya shar.',17.5,-21.5],['Sahroi Kabir',0,24],['Kalaxari',18,-24]].forEach(([t,lo,la])=>{const [x,y]=P(lo,la);g.push(`<text class="ptl s" x="${x}" y="${y}">${t}</text>`)});
+  const [vx,vy]=P(25.9,-17.9);g.push(`<circle class="ring" cx="${vx}" cy="${vy}" r="6" style="stroke:#4fc3ff"/><circle cx="${vx}" cy="${vy}" r="4" fill="#fff"/>`);
+  document.getElementById('map2').innerHTML=g.join('');
+  document.getElementById('lens').innerHTML=RIV.filter(r=>r.len).map(r=>`<div class="lenrow"><b>${r.n}</b><div class="lenbar"><i data-w="${(r.len/6671*100).toFixed(1)}"></i></div><span>${r.len.toLocaleString('ru')} km</span></div>`).join('');
+}
+const PEAKS=[['Kilimanjaro',5895],['Keniya',5199],['Margerita',5109],['Ras-Dashen',4620],['Tubkal (Atlas)',4165]];
+document.getElementById('peaks').innerHTML=PEAKS.map(([n,h])=>`<div class="pk"><div class="v">${h} m</div><div class="tri" data-h="${(h/5895*100).toFixed(0)}"></div><div class="nm">${n}</div></div>`).join('');
+
+const Z1=[['🦍','Gorilla','Eng yirik maymun; o‘rmonda oila bo‘lib yashaydi','m5'],['🐒','Shimpanze','Juda aqlli, daraxtlarda yashaydi','m3'],['🐵','Martishka','Daraxtdan daraxtga sakraydigan kichik maymun','m3'],['🦓','Okapi','Jirafaning qarindoshi, oyoqlari zebradek yo‘l-yo‘l','m4'],['🦛','Mitti begemot','Bo‘yi 80 sm gacha','m5'],['🐗','Popukquloq cho‘chqa','Quloqlari popukli yovvoyi cho‘chqa','m4'],['🦌','Afrika bug‘uchasi','O‘rmonda yashovchi kichik kiyik','m3'],['🐘','O‘rmon fili','Savanna filidan kichikroq','m2'],['🐆','Qoplon','O‘rmonning asosiy yirtqichi','m1'],['🐜','Chumolilar','O‘rmonning barcha qismlarida','m3'],['🐍','Ilonlar','Ko‘p turlari bor','m4'],['🦜','Qushlar','Yuzlab turlari bor','m2']];
+const Z2=[['🦁','Sher','Savannaning “qiroli”, gala bo‘lib ov qiladi','m1'],['🐘','Fil','Balandligi 4 m, og‘irligi 12 t gacha!','m2'],['🦒','Jirafa','Eng baland hayvon, akatsiya barglarini yeydi','m5'],['🦓','Zebra','Har birining yo‘llari o‘ziga xos','m4'],['🦏','Karkidon','Kuchli shoxli ulkan hayvon','m4'],['🦛','Begemot','Ko‘p vaqtini suvda o‘tkazadi','m5'],['🐃','Buyvol','Afrika buyvoli — kuchli va xavfli','m2'],['🦌','Antilopalar','Savannada 40 ta turi bor','m3'],['🐆','Gepard','Eng tez yuguruvchi hayvon','m4'],['🐊','Nil timsohi','Uzunligi 5–6 m','m4'],['🐺','Chiyabo‘ri','Yirtqich, gala bo‘lib yuradi','m3'],['🐒','Pavian','Maymun turi, to‘da bo‘lib yashaydi','m3'],['🪶','Afrika tuyaqushi','Eng katta qush: bo‘yi 2,8 m, 90 kg','m5'],['🦅','Kotib qush','Ilon ovlaydigan qush','m2'],['🐦','Nektarxo‘r','Eng kichik qushlardan','m3']];
+const Z3=[['🐪','Tuya','Cho‘l kemasi, suvsizlikka chidamli','m4'],['🦌','Antilopa','Suv va ozuqa izlab uzoqqa boradi','m3'],['🦎','Kaltakesak','Uzoq vaqt suvsiz yashaydi','m3'],['🐢','Toshbaqa','Suvsizlikka chidamli','m4'],['🐍','Ilon','Cho‘l iqlimiga moslashgan','m4'],['🐕','Giena','Chipor sirtlon — yirtqich','m1'],['🐺','Chiyabo‘ri','Tunda ov qiladi','m3'],['🦊','Tulki','Fenek — katta quloqli cho‘l tulkisi','m5']];
+function zoo(id,arr){document.getElementById(id).innerHTML=arr.map(([e,n,f,m],i)=>`<div class="an" onclick="this.classList.toggle('open')"><span class="e ${m}" style="animation-delay:${(i*.17)%1}s">${e}</span><h4>${n}</h4><p>${f}</p></div>`).join('')}
+zoo('zoo1',Z1);zoo('zoo2',Z2);zoo('zoo3',Z3);
+
+const PL=[['🌳','Baobab','Savannaning bahaybat daraxti, tanasida suv to‘playdi'],['🌿','Velvichiya','Namib cho‘lida o‘sadi, barglari 3 m gacha, 150 yildan ortiq yashaydi'],['🌴','Yog‘ palmasi va dum palmasi','Savannada o‘sadi'],['☂️','Soyabonsimon akatsiya','Yomg‘irli davr 6 oy joylarda'],['🌵','Ixroj','Semiz tanali daraxtsimon o‘simlik'],['🌴','Xurmo','Sahroi Kabir vohalarida eng keng tarqalgan'],['🍉','Yovvoyi tarvuz, aloe, molochay','Namib chalacho‘llarida; tarvuz suv o‘rnida iste’mol qilinadi'],['🫒','Zaytun, probka emani, pakana palma','Shimoliy subtropik makvis o‘rmonlari'],['🌲','Atlas kedri, tis','Atlas tog‘larida yuqoriroqda'],['🌳','Kiparis, kap zaytuni, kumush daraxt','Janubiy Afrika subtropiklari']];
+document.getElementById('plants').innerHTML=PL.map(([e,n,p],i)=>`<div class="pl"><span class="e" style="animation-delay:${i*.3}s">${e}</span><div><h4>${n}</h4><p>${p}</p></div></div>`).join('');
+
+const QZ=[['Afrika kattaligi bo‘yicha nechanchi materik?','2-o‘rin (Yevrosiyodan keyin), 29,2 mln km²'],['Afrikaning shimoliy chekka nuqtasi qaysi?','Ben Sekka burni'],['Afrikaning eng baland nuqtasi?','Kilimanjaro vulqoni — 5895 m'],['Viktoriya sharsharasini kim topgan?','David Livingston (Zambezi daryosida)'],['Efiopiya qaysi o‘simlikning vatani ekanini Vavilov aniqlagan?','Qattiq bug‘doy'],['Savannalar Afrika hududining qancha qismini egallaydi?','Taxminan 40%'],['Toshloq cho‘llar mahalliy tilda qanday ataladi?','Gamada'],['“Mis mintaqasi” qayerda?','Zambiya va Kongo DR chegara zonasida']];
+document.getElementById('quiz').innerHTML=QZ.map(([q,a],i)=>`<div class="card q rise" style="--d:${i*.08}s" onclick="this.classList.toggle('open')"><h4>${i+1}. ${q}</h4><div class="a">✅ ${a}</div></div>`).join('');
+
+function parade(id){const A=[['🐘','Fil',110],['🦒','Jirafa',120],['🦓','Zebra',88],['🦁','Sher',92],['🦏','Karkidon',96],['🐆','Gepard',80],['🦛','Begemot',92],['🐪','Tuya',100],['🦍','Gorilla',90],['🐊','Timsoh',80]];
+ document.getElementById(id).innerHTML=A.map(([e,n,s],i)=>`<div class="walker" style="--s:${s}px;--t:30s;--dl:${-i*3}s"><span style="animation-delay:${i*.13}s">${e}</span><em>${n}</em></div>`).join('')}
+parade('parade1');parade('parade2');
+map1();map2();
+
+/* ---------- deck ---------- */
+const S=[...document.querySelectorAll('.slide')];let cur=0,timer=null;
+function count(el){const t=+el.dataset.c,dec=t%1?1:0,st=performance.now();(function f(n){const k=Math.min(1,(n-st)/1600),v=t*(1-Math.pow(1-k,3));el.textContent=v.toFixed(dec).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,' ');if(k<1)requestAnimationFrame(f)})(st)}
+function go(i){
+  if(vOpen!==null){closeV();return}
+  i=Math.max(0,Math.min(S.length-1,i));
+  if(S[cur]&&cur!==i){const L=S[cur];L.classList.add('leaving');setTimeout(()=>L.classList.remove('leaving'),1300)}
+  S.forEach((s,j)=>{s.classList.toggle('active',j===i);s.classList.toggle('prev',j<i)});
+  const s=S[i];cur=i;
+  s.querySelectorAll('.body').forEach(b=>b.scrollTop=0);
+  // restart css animations
+  const RZ=s.querySelectorAll('.rise,.riv');RZ.forEach(e=>e.style.animation='none');s.offsetHeight;RZ.forEach(e=>e.style.animation='');
+  s.querySelectorAll('[data-c]').forEach(count);
+  document.querySelectorAll('.lenbar i').forEach(e=>e.style.width='0');
+  document.querySelectorAll('.tri').forEach(e=>e.style.height='0');
+  setTimeout(()=>{s.querySelectorAll('.lenbar i').forEach(e=>e.style.width=e.dataset.w+'%');s.querySelectorAll('.tri').forEach(e=>e.style.height=e.dataset.h+'%')},400);
+  document.getElementById('count').textContent=(i+1)+'/'+S.length;
+  if(typeof thumbPlay==='function')thumbPlay();
+  document.getElementById('bar').style.width=((i+1)/S.length*100)+'%';
+}
+function togglePlay(){const b=document.getElementById('play');if(timer){clearInterval(timer);timer=null;b.textContent='⏵'}else{timer=setInterval(()=>go(cur+1>=S.length?0:cur+1),12000);b.textContent='⏸'}}
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}if(['ArrowLeft','PageUp'].includes(e.key))go(cur-1)});
+let tx=null,ty=null;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)go(cur+(dx<0?1:-1));tx=null},{passive:true});
+
+function boom(){}
+
+
+/* ---------- videos (from data attributes) ---------- */
+const VIDEOS=S.map(sl=>sl.dataset.video?{src:sl.dataset.video,t:sl.dataset.vt||'',d:''}:null);
+let vOpen=null;
+function initThumbs(){S.forEach((sl,i)=>{const v=VIDEOS[i];if(!v)return;const box=sl.querySelector('.hd')||sl.querySelector('.hero');
+  const th=document.createElement('div');th.className='vthumb';
+  th.innerHTML=`<video src="${v.src}" muted loop playsinline preload="metadata"></video><div class="play"><b>▶</b></div><div class="cap">🎬 ${v.t}</div>`;
+  th.onclick=e=>{e.stopPropagation();openV(i,th)};box.appendChild(th)})}
+function thumbPlay(){S.forEach((sl,j)=>{const tv=sl.querySelector('.vthumb video');if(!tv)return;if(j===cur&&vOpen===null&&!introOn){tv.play().catch(()=>{})}else tv.pause()})}
+function fullStyle(){const W=innerWidth,H=innerHeight;return {left:'0px',top:'0px',width:W+'px',height:H+'px',transform:'none'}}
+async function goLandscape(){
+  try{const el=document.documentElement;if(!document.fullscreenElement&&el.requestFullscreen){await el.requestFullscreen({navigationUI:'hide'})}}catch(e){}
+  try{if(screen.orientation&&screen.orientation.lock){await screen.orientation.lock('landscape')}}catch(e){}
+  setTimeout(()=>{if(vOpen!==null){Object.assign(document.getElementById('vx').style,fullStyle())}},350)}
+function openV(i,th){window._vth=th;const v=VIDEOS[i],vx=document.getElementById('vx'),m=document.getElementById('vxmedia'),r=th.getBoundingClientRect();
+  vOpen=i;Object.assign(vx.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',transform:'none'});vx.className='show';
+  m.innerHTML=`<video src="${v.src}" controls autoplay playsinline controlsList="nofullscreen"></video>`;thumbPlay();
+  document.getElementById('vxdim').classList.add('on');
+  goLandscape();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{Object.assign(vx.style,fullStyle());vx.classList.add('full')}));
+  const vid=m.querySelector('video');if(vid){vid.currentTime=0;vid.play().catch(()=>{});vid.onended=()=>{setTimeout(closeV,600)}}}
+addEventListener('resize',()=>{if(vOpen!==null){const vx=document.getElementById('vx');vx.style.transition='none';Object.assign(vx.style,fullStyle());requestAnimationFrame(()=>vx.style.transition='')}});
+function closeV(){if(vOpen===null)return;const vx=document.getElementById('vx'),th=(window._vth&&window._vth.isConnected&&window._vth.getBoundingClientRect().width?window._vth:S[vOpen].querySelector('.vthumb')),r=th.getBoundingClientRect();
+  const vid=vx.querySelector('video');if(vid)vid.pause();
+  vx.classList.remove('full');Object.assign(vx.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',transform:'none'});
+  try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock()}catch(e){}
+  try{if(document.fullscreenElement&&!window._userFs)document.exitFullscreen().catch(()=>{})}catch(e){}
+  document.getElementById('vxdim').classList.remove('on');vOpen=null;thumbPlay();setTimeout(()=>{if(vOpen===null){vx.className='';document.getElementById('vxmedia').innerHTML=''}},760)}
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeV();closeLB()}if((e.key==='v'||e.key==='V')&&vOpen===null&&VIDEOS[cur]&&!introOn){openV(cur,S[cur].querySelector('.vthumb'))}},true);
+
+/* ---------- lightbox (rasmni bosganda kattalashadi) ---------- */
+let lbFrom=null;
+function openLB(fig){const img=fig.querySelector('img'),r=fig.getBoundingClientRect(),lb=document.getElementById('lb');
+  lbFrom=fig;lb.innerHTML=`<img src="${img.src}">`;Object.assign(lb.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});lb.className='show';
+  document.getElementById('lbdim').classList.add('on');const cap=document.getElementById('lbcap');cap.textContent=fig.dataset.cap||'';cap.classList.add('on');
+  const iw=img.naturalWidth||16,ih=img.naturalHeight||9,W=innerWidth*.94,H=innerHeight*.84,k=Math.min(W/iw,H/ih),w=iw*k,h=ih*k;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>Object.assign(lb.style,{left:(innerWidth-w)/2+'px',top:(innerHeight*.92-h)/2+'px',width:w+'px',height:h+'px'})))}
+function closeLB(){const lb=document.getElementById('lb');if(!lbFrom)return;const r=lbFrom.getBoundingClientRect();
+  Object.assign(lb.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px'});document.getElementById('lbdim').classList.remove('on');document.getElementById('lbcap').classList.remove('on');
+  lbFrom=null;setTimeout(()=>{if(!lbFrom)lb.className=''},660)}
+document.addEventListener('click',e=>{const f=e.target.closest('.frame');if(f&&!lbFrom){e.stopPropagation();openLB(f);return}if(e.target.closest('#lb,#lbdim')){closeLB()}},true);
+
+function fit(){const st=document.getElementById('stage'),k=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform=`translate(-50%,-50%) scale(${k})`}
+fit();addEventListener('resize',fit);initThumbs();
+function fs(){try{const d=document;if(!d.fullscreenElement){window._userFs=true;d.documentElement.requestFullscreen().catch(()=>{})}else{window._userFs=false;d.exitFullscreen()}}catch(e){}}
+addEventListener('keydown',e=>{if(e.key==='f'||e.key==='F')fs()});
+
+/* ===================== MAGIC FX ===================== */
+const SVGNS='http://www.w3.org/2000/svg';
+function arcaneSVG(size,label){
+  const c=size/2,R=c-10;const runes=(label||'AFRIKA ✦ MATERIGI ✦ GEOGRAFIYA ✦ ');
+  let star='';for(let k=0;k<6;k++){const a=k*Math.PI/3-Math.PI/2;star+=(k?'L':'M')+(c+Math.cos(a)*R*.62).toFixed(1)+','+(c+Math.sin(a)*R*.62).toFixed(1)}
+  let star2='';[0,2,4,1,3,5].forEach((k,i)=>{const a=k*Math.PI/3-Math.PI/2;star2+=(i?'L':'M')+(c+Math.cos(a)*R*.62).toFixed(1)+','+(c+Math.sin(a)*R*.62).toFixed(1)});
+  let ticks='';for(let k=0;k<72;k++){const a=k*Math.PI/36,r1=R*.86,r2=R*(k%6?.89:.93);ticks+=`M${(c+Math.cos(a)*r1).toFixed(1)},${(c+Math.sin(a)*r1).toFixed(1)}L${(c+Math.cos(a)*r2).toFixed(1)},${(c+Math.sin(a)*r2).toFixed(1)}`}
+  let dots='';for(let k=0;k<12;k++){const a=k*Math.PI/6;dots+=`<circle cx="${(c+Math.cos(a)*R*.74).toFixed(1)}" cy="${(c+Math.sin(a)*R*.74).toFixed(1)}" r="${size/120}" fill="#ffe7a0"/>`}
+  const id='p'+Math.random().toString(36).slice(2,7);
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="${SVGNS}">
+  <defs><path id="${id}" d="M${c},${c} m-${R*.93},0 a${R*.93},${R*.93} 0 1,1 ${R*1.86},0 a${R*.93},${R*.93} 0 1,1 -${R*1.86},0"/></defs>
+  <g class="r1" fill="none" stroke="#ffd36b"><circle cx="${c}" cy="${c}" r="${R}" stroke-width="4"/><circle cx="${c}" cy="${c}" r="${R*.97}" stroke-width="1.5"/>
+   ${size>300?`<text font-family="Georgia,serif" font-weight="700" font-size="${size/26}" fill="#ffe7a0" stroke="none" letter-spacing="${size/90}"><textPath href="#${id}">${runes.repeat(3)}</textPath></text>`:''}</g>
+  <g class="r2" fill="none" stroke="#ffcf5a"><circle cx="${c}" cy="${c}" r="${R*.86}" stroke-width="3"/><path d="${ticks}" stroke-width="2"/>${dots}<circle cx="${c}" cy="${c}" r="${R*.7}" stroke-width="1.5" stroke-dasharray="6 10"/></g>
+  <g class="r3" fill="none" stroke="#ffd36b" stroke-width="2.5"><path d="${star}Z"/><path d="${star2}Z" opacity=".7"/><circle cx="${c}" cy="${c}" r="${R*.31}" stroke-width="2"/></g></svg>`}
+document.querySelectorAll('.arcane[data-arc]').forEach(el=>el.innerHTML=arcaneSVG(+el.dataset.arc));
+document.querySelectorAll('.corner').forEach(el=>el.innerHTML=arcaneSVG(150));
+function gearPath(cx,cy,r,teeth){let d='';const n=teeth*2;for(let k=0;k<=n;k++){const a=k*Math.PI/teeth,rr=k%2?r*.84:r;const a2=a+Math.PI/teeth;d+=(k?'L':'M')+(cx+Math.cos(a)*rr).toFixed(1)+','+(cy+Math.sin(a)*rr).toFixed(1)+'L'+(cx+Math.cos(a2-0.12)*rr).toFixed(1)+','+(cy+Math.sin(a2-0.12)*rr).toFixed(1)}return d+'Z'}
+S.forEach(sl=>{const vt=sl.querySelector('.vtitle');
+  if(vt){const h=vt.querySelector('h2'),sm=vt.querySelector('small');const ch=(h.textContent.match(/[A-Za-zÀ-ž]/)||['A'])[0].toUpperCase();
+    const img=sl.querySelector('.bgw img');const L=document.createElement('span');L.className='letter';L.textContent=ch;
+    L.style.backgroundImage=img?`url(${img.src})`:'linear-gradient(160deg,#ffe0a0,#e08a2e 50%,#8a3d10)';
+    const w=document.createElement('div');w.appendChild(sm);w.appendChild(h);vt.innerHTML='';vt.appendChild(L);vt.appendChild(w)}
+  const mb=sl.querySelector('#map1');if(mb){const card=mb.closest('.mapbox');card.style.position='relative';const a=document.createElement('div');a.className='arcane';a.style.cssText='left:50%;top:50%;margin:-400px 0 0 -400px;opacity:.55';a.innerHTML=arcaneSVG(800,'AFRIKA ✦ EKVATOR ✦ TROPIKLAR ✦ CHEKKA NUQTALAR ✦ ');card.appendChild(a)}
+  if(sl.classList.contains('gearbg')){const g=document.createElementNS(SVGNS,'svg');g.setAttribute('class','gears');g.setAttribute('width','1920');g.setAttribute('height','1080');g.style.cssText='left:0;top:0;z-index:1;opacity:.28';
+    const G=[[1700,900,260,24,40],[1330,1030,170,16,-28],[230,960,200,18,-34],[1890,520,140,14,24],[120,380,120,12,30]];
+    g.innerHTML=G.map(([x,y,r,t,sp])=>`<g style="animation:spinA ${Math.abs(sp)}s linear infinite ${sp<0?'reverse':''}"><path d="${gearPath(x,y,r,t)}" fill="none" stroke="#ffd36b" stroke-width="5"/><circle cx="${x}" cy="${y}" r="${r*.35}" fill="none" stroke="#ffd36b" stroke-width="4"/><circle cx="${x}" cy="${y}" r="${r*.6}" fill="none" stroke="#ffd36b" stroke-width="2" stroke-dasharray="10 12"/></g>`).join('');
+    sl.insertBefore(g,sl.querySelector('.hd'))}
+  if(sl.classList.contains('beamslide')){const f=sl.querySelector('.frame');if(f){const b=document.createElement('div');b.className='beam';f.appendChild(b);const u=document.createElement('div');u.className='burst';u.style.cssText='left:calc(50% - 15px);top:18%';f.appendChild(u)}}
+});
+
+/* particles */
+const FXC=document.getElementById('fx'),fx=FXC.getContext('2d'),BC=document.getElementById('bolt'),bx=BC.getContext('2d');
+const PRE={
+ gold:{c:['#ffd36b','#ffb347','#fff3c4'],n:90,from:'bottom',vy:[-2.2,-0.8],vx:[-.4,.4],s:[1.5,3.5]},
+ dust:{c:['#ffd36b','#ffb347','#fff3c4'],n:90,from:'any',vy:[-.4,.1],vx:[.2,.8],s:[1,3]},
+ stars:{c:['#ffe7a0','#bfeaff','#ffffff'],n:80,from:'any',vy:[-.2,.2],vx:[-.2,.2],s:[1,3],tw:1,star:1},
+ water:{c:['#4fc3ff','#9fe3ff','#ffffff'],n:120,from:'left',vy:[.2,.8],vx:[1.2,3],s:[1.2,3]},
+ embers:{c:['#ff6a00','#ff9a3d','#ffd36b','#ff3b1f'],n:130,from:'bottom',vy:[-3,-1],vx:[-.6,.6],s:[1.5,4]},
+ snow:{c:['#ffffff','#e8f4ff'],n:150,from:'top',vy:[.8,2],vx:[-.6,.3],s:[1.5,4]},
+ crystal:{c:['#ffffff','#bfeaff','#9fe3ff','#ffe7a0'],n:90,from:'any',vy:[-.15,.15],vx:[-.15,.15],s:[1,3.5],tw:1,star:1},
+ fireflies:{c:['#b8ff6a','#e6ff9a','#7dff8a'],n:70,from:'any',vy:[-.6,.6],vx:[-.6,.6],s:[2,4],tw:1,wander:1},
+ leaves:{c:['#6ed37a','#a8e063','#3fa34d','#d4e157'],n:45,from:'top',vy:[.6,1.6],vx:[-.8,.8],s:[6,11],leaf:1},
+ sand:{c:['#f6c76e','#e0a050','#ffe0a3'],n:200,from:'left',vy:[-.4,.4],vx:[4,9],s:[1,2.5]},
+ phoenix:{c:['#ff6a00','#ffb347','#ffd36b','#fff3c4'],n:150,from:'bottom',vy:[-3.4,-1.2],vx:[-.7,.7],s:[1.5,4.5]}
+};
+let PT=[],pre=PRE.gold;const RR=(a)=>a[0]+Math.random()*(a[1]-a[0]);
+function spawn(init){const p=pre;let x,y;
+  if(p.from==='bottom'){x=Math.random()*1920;y=init?Math.random()*1080:1090}
+  else if(p.from==='top'){x=Math.random()*1920;y=init?Math.random()*1080:-10}
+  else if(p.from==='left'){x=init?Math.random()*1920:-10;y=Math.random()*1080}
+  else{x=Math.random()*1920;y=Math.random()*1080}
+  return {x,y,vx:RR(p.vx),vy:RR(p.vy),s:RR(p.s),c:p.c[Math.random()*p.c.length|0],ph:Math.random()*6.28,rot:Math.random()*6.28,life:1,perm:1}}
+function setFx(name){pre=PRE[name]||PRE.gold;PT=PT.filter(q=>!q.perm);for(let k=0;k<pre.n;k++)PT.push(spawn(true))}
+function sparkBurst(x,y,n,cols,sp){for(let k=0;k<n;k++){const a=Math.random()*6.283,v=(sp||6)*(0.3+Math.random());PT.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,s:1.5+Math.random()*3,c:cols[Math.random()*cols.length|0],life:1,perm:0,g:.06,ph:0,rot:0})}}
+function fxLoop(){if(introOn){setTimeout(()=>requestAnimationFrame(fxLoop),300);return}fx.clearRect(0,0,1920,1080);fx.globalCompositeOperation='lighter';
+  for(const q of PT){
+    if(q.perm){if(pre.wander){q.vx+=(Math.random()-.5)*.15;q.vy+=(Math.random()-.5)*.15;q.vx*=.98;q.vy*=.98}
+      q.x+=q.vx;q.y+=q.vy;q.ph+=.05;q.rot+=.03;if(q.x<-30||q.x>1950||q.y<-30||q.y>1110){Object.assign(q,spawn(false))}}
+    else{q.x+=q.vx;q.y+=q.vy;q.vy+=q.g||0;q.vx*=.97;q.vy*=.97;q.life-=.018}
+    let a=q.perm?(pre.tw?0.35+0.65*Math.abs(Math.sin(q.ph)):0.9):Math.max(q.life,0);
+    fx.globalAlpha=a;fx.fillStyle=q.c;
+    if(pre.leaf&&q.perm){fx.globalCompositeOperation='source-over';fx.save();fx.translate(q.x,q.y);fx.rotate(q.rot);fx.beginPath();fx.ellipse(0,0,q.s,q.s*.45,0,0,6.283);fx.fill();fx.restore();fx.globalCompositeOperation='lighter';continue}
+    fx.beginPath();fx.arc(q.x,q.y,q.s,0,6.283);fx.fill();
+    fx.globalAlpha=a*.25;fx.beginPath();fx.arc(q.x,q.y,q.s*3,0,6.283);fx.fill();
+    if(pre.star&&q.perm&&q.s>2.4){fx.globalAlpha=a*.8;fx.fillRect(q.x-q.s*4,q.y-.6,q.s*8,1.2);fx.fillRect(q.x-.6,q.y-q.s*4,1.2,q.s*8)}}
+  PT=PT.filter(q=>q.perm||q.life>0);fx.globalAlpha=1;
+  if(!document.hidden)requestAnimationFrame(fxLoop);else setTimeout(()=>requestAnimationFrame(fxLoop),500)}
+function bolt(x1,y1,x2,y2,disp,ctx){if(disp<4){ctx.lineTo(x2,y2);return}const mx=(x1+x2)/2+(Math.random()-.5)*disp,my=(y1+y2)/2+(Math.random()-.5)*disp;bolt(x1,y1,mx,my,disp/2,ctx);bolt(mx,my,x2,y2,disp/2,ctx)}
+let boltT=null;
+function lightning(n,cx,cy,col){col=col||'200,225,255';bx.clearRect(0,0,1920,1080);bx.globalCompositeOperation='lighter';
+  for(let k=0;k<n;k++){const a=Math.random()*6.283,len=500+Math.random()*700;const x0=cx??960,y0=cy??540;
+    for(const [w,al] of [[10,.15],[4,.5],[1.6,1]]){bx.strokeStyle=`rgba(${col},${al})`;bx.lineWidth=w;bx.beginPath();bx.moveTo(x0,y0);bolt(x0,y0,x0+Math.cos(a)*len,y0+Math.sin(a)*len,220,bx);bx.stroke()}}
+  BC.style.transition='none';BC.style.opacity=1;clearTimeout(boltT);boltT=setTimeout(()=>{BC.style.transition='opacity .6s';BC.style.opacity=0},140)}
+setInterval(()=>{if(S[cur].classList.contains('storm')&&vOpen===null&&!document.hidden&&!introOn){lightning(2,300+Math.random()*1300,320+Math.random()*300)}},2600);
+const _go=go;
+go=function(i){if(introOn)return;const before=cur;_go(i);if(vOpen!==null)return;const sl=S[cur];
+  setFx(sl.dataset.fx);
+  if(before!==cur){setTimeout(()=>lightning(4,960,540,'190,215,255'),500);
+    if(sl.dataset.fx==='crystal')setTimeout(()=>sparkBurst(1500,650,240,['#ffffff','#bfeaff','#9fe3ff','#e0f7ff'],11),900);
+    if(sl.querySelector('.hero'))setTimeout(()=>sparkBurst(960,540,220,['#fff3c4','#ffd36b','#ff9a3d'],10),1500)}};
+document.getElementById('stage').addEventListener('click',e=>{if(e.target.closest('button,.vthumb,.an,.q,.rv,video,.frame'))return;const st=document.getElementById('stage').getBoundingClientRect();const k=st.width/1920;
+  sparkBurst((e.clientX-st.left)/k,(e.clientY-st.top)/k,90,['#fff3c4','#ffd36b','#ff9a3d','#ffffff'],7)});
+
+/* ===================== INTRO (namuna videodagidek) ===================== */
+let introOn=true;
+(function(){const I=document.getElementById('intro'),cv=I.querySelector('canvas'),c=cv.getContext('2d');cv.width=960;cv.height=540;c.scale(.5,.5);
+  const T=[];const at=(ms,f)=>{if(window._go0)T.push(setTimeout(f,ms));else (window._q=window._q||[]).push([ms,f])};window._at=at;
+  let ip=[],run=true;
+  function boltsI(n,col,x0,y0,disp){c.globalCompositeOperation='source-over';
+    for(let k=0;k<n;k++){const a=Math.random()*6.283,len=700+Math.random()*700;for(const [w,al] of [[12,.15],[5,.45],[2,1]]){c.strokeStyle=`rgba(${col},${al})`;c.lineWidth=w;c.beginPath();c.moveTo(x0,y0);bolt(x0,y0,x0+Math.cos(a)*len,y0+Math.sin(a)*len,disp||260,c);c.stroke()}}}
+  function loop(){if(!run)return;
+    if(I.classList.contains('p3')){c.clearRect(0,0,1920,1080);c.globalCompositeOperation='lighter';
+      if(Math.random()<.9)for(let k=0;k<4;k++)ip.push({x:760+Math.random()*400,y:600+Math.random()*60,vx:(Math.random()-.5)*2,vy:-1-Math.random()*3,l:1,s:1+Math.random()*3,c:['#ffd36b','#ffb347','#fff3c4','#ff8a1f'][k]});
+      for(const p of ip){p.x+=p.vx+Math.sin(p.y/40)*.6;p.y+=p.vy;p.l-=.008;c.globalAlpha=Math.max(p.l,0);c.fillStyle=p.c;c.beginPath();c.arc(p.x,p.y,p.s,0,6.283);c.fill();c.globalAlpha=Math.max(p.l,0)*.3;c.beginPath();c.arc(p.x,p.y,p.s*3,0,6.283);c.fill()}
+      ip=ip.filter(p=>p.l>0);c.globalAlpha=1}
+    requestAnimationFrame(loop)}
+  // phase 1: logo (white)
+  at(2700,()=>{boltsI(3,'60,70,90',960,540,300)});
+  at(2950,()=>{boltsI(3,'60,70,90',960,540,300)});
+  // phase 2: cosmic
+  at(3300,()=>{I.querySelector('.ph1').style.opacity=0;const p2=I.querySelector('.ph2');p2.style.opacity=1;I.classList.add('p2');c.clearRect(0,0,1920,1080)});
+  for(let k=0;k<6;k++)at(3400+k*340,()=>{c.clearRect(0,0,1920,1080);boltsI(4,'190,140,255',960,540,320)});
+  at(5500,()=>{c.clearRect(0,0,1920,1080);const f=I.querySelector('.flash');f.style.transition='none';f.style.opacity=1;
+    setTimeout(()=>{I.querySelector('.ph2').style.opacity=0;const p3=I.querySelector('.ph3');p3.style.opacity=1;I.classList.add('p3');f.style.transition='opacity 1s';f.style.opacity=0},180)});
+  at(5700,()=>rbPlay(at,I));
+  requestAnimationFrame(loop);
+  window.endIntro=function(){if(!introOn)return;document.body.classList.remove('intro');T.forEach(clearTimeout);I.classList.add('out');introOn=false;setTimeout(()=>{run=false;I.style.display='none'},1200);go(0);thumbPlay()};
+  I.querySelector('.istart').addEventListener('click',e=>{e.stopPropagation();endIntro()});I.querySelector('.istart').addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();endIntro()});I.querySelector('.iskip').onclick=e=>{e.stopPropagation();endIntro()};
+  addEventListener('keydown',e=>{if(introOn&&['ArrowRight','Enter',' ','PageDown'].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();endIntro()}},true);
+})();
+
+/* ===================== FON SLAYD-SHOU + KO‘RGAZMA ===================== */
+const ALLP=[...document.querySelectorAll('.txt p')].map(p=>p.innerHTML);
+const STOP=['afrika','afrikaning','xaritadagi','shartli','sayyohlar','plitalar','yer','million','irg‘itma','sharqiy','vindxuk'];
+function parasFor(cap,sl){const low=cap.toLowerCase();let m=ALLP.filter(h=>h.replace(/<[^>]+>/g,'').toLowerCase().includes(low));
+  if(!m.length){const w=(low.match(/[a-zʻ‘’ʼ'-]{4,}/g)||[])[0];if(w&&!STOP.includes(w)){const stem=w.slice(0,Math.max(5,w.length-2));m=ALLP.filter(h=>h.replace(/<[^>]+>/g,'').toLowerCase().includes(stem))}}
+  const ws=low.match(/[a-zʻ‘’ʼ'-]+/g)||[];const last=ws[ws.length-1];if(ws.length>=2&&last&&last.length>=5&&!STOP.includes(last)){const st=last.slice(0,last.length-1);ALLP.forEach(h=>{const tx=h.replace(/<[^>]+>/g,'').toLowerCase();const ix=tx.indexOf(st);if(!m.includes(h)&&ix>=0&&!/[,(]\s*$/.test(tx.slice(Math.max(0,ix-3),ix)))m.push(h)})}
+  if(m.length)return m.slice(0,3);
+  return [...sl.querySelectorAll('.txt p')].map(p=>p.innerHTML)}
+function slideItems(sl){const items=[];const seen=new Set();
+  const title=(sl.querySelector('.vtitle h2')||sl.querySelector('h1')||{textContent:''}).textContent.trim();
+  const own=[...sl.querySelectorAll('.txt p')].map(p=>p.innerHTML);
+  sl.querySelectorAll('.frame').forEach(f=>{const im=f.querySelector('img');if(!im||seen.has(im.src))return;seen.add(im.src);
+    const t=(f.dataset.cap||title).replace(/^\d+-rasm(\s*\([A-Z]\))?\.\s*/,'').replace(/^[A-Z]\)\s*/,'');
+    items.push({src:im.src,t,ps:parasFor(t,sl)})});
+  const bg=sl.querySelector('.bgw img.kb,.bgimg');if(bg&&!seen.has(bg.src)){seen.add(bg.src);items.unshift({src:bg.src,t:title,ps:own.length?own:[(sl.querySelector('.sub')||{textContent:''}).textContent]})}
+  return items}
+// background crossfade slideshow
+S.forEach(sl=>{const w=sl.querySelector('.bgw');if(!w||!w.querySelector('img.kb'))return;const base=w.querySelector('img.kb');
+  const srcs=[...new Set([...sl.querySelectorAll('.frame img')].filter(i=>!/contain/.test(i.getAttribute('style')||'')).map(i=>i.src))].filter(x=>x!==base.src);
+  if(!srcs.length)return;const layers=srcs.slice(0,3).map(src=>{const im=document.createElement('img');im.className='kb bgx';im.src=src;im.alt='';w.insertBefore(im,w.lastChild.nextSibling);return im});
+  let k=-1;sl._bgTimer=setInterval(()=>{if(!sl.classList.contains('active'))return;layers.forEach(l=>l.classList.remove('on'));k=(k+1)%(layers.length+1);if(k<layers.length)layers[k].classList.add('on')},6500)});
+// Ko'rgazma buttons
+S.forEach((sl,i)=>{const host=sl.querySelector('.hd')||sl.querySelector('.hero');if(!host)return;const b=document.createElement('button');b.className='kgo';b.textContent='🎞 Ko‘rgazma';
+  b.onclick=e=>{e.stopPropagation();kzOpen(i)};host.appendChild(b)});
+let KZ={items:[],i:0,t:null,play:true};
+function kzBuild(){const kz=document.getElementById('kzs');kz.querySelectorAll('.kf').forEach(f=>f.remove());
+  KZ.items.forEach((it,j)=>{const f=document.createElement('div');f.className='kf fitm';
+    const ch=(it.t.match(/[A-Za-zÀ-ž]/)||['A'])[0].toUpperCase();let vj=it.si;while(vj>0&&!VIDEOS[vj])vj--;const V=VIDEOS[vj];
+    f.innerHTML=`<img class="kblur" src="${it.src}"><img class="kfit" src="${it.src}">`+
+      `<div class="kpan">${V?`<div class="kvid" data-vi="${vj}"><video src="${V.src}" muted loop playsinline preload="none"></video><div class="kpl"><b>▶</b></div><div class="kvc">🎬 ${V.t}</div></div>`:''}<div class="kL" style="background-image:url(${it.src})">${ch}</div><div class="kT"><h3>${it.t}</h3>${(it.ps||[]).map(x=>`<p>${x}</p>`).join('')}</div></div>`;
+    const kv=f.querySelector('.kvid');if(kv){kv.addEventListener('click',e=>{e.stopPropagation();const v=kv.querySelector('video');v.pause();openV(+kv.dataset.vi,kv)})}
+    kz.appendChild(f)})}
+function kzShow(n){const F=[...document.querySelectorAll('#kz .kf')];if(!F.length)return;const old=F[KZ.i];if(old&&old.classList.contains('cur')){old.classList.add('out');setTimeout(()=>old.classList.remove('out'),1300)}KZ.i=(n+F.length)%F.length;
+  F.forEach((f,j)=>{f.classList.toggle('cur',j===KZ.i);f.classList.toggle('prev',j<KZ.i)});kzFitText(F[KZ.i]);F.forEach((f,j)=>{const v=f.querySelector('.kvid video');if(!v)return;if(j===KZ.i&&vOpen===null){v.preload='auto';v.play().catch(()=>{})}else v.pause()});
+  document.querySelector('#kz .kcount').textContent=`🎞 Ko‘rgazma · ${KZ.i+1}/${F.length}`;
+  const bar=document.querySelector('#kz .kbar');bar.classList.remove('run');void bar.offsetWidth;if(KZ.play)bar.classList.add('run');
+  clearTimeout(KZ.t);if(KZ.play)KZ.t=setTimeout(()=>kzShow(KZ.i+1),5000)}
+function kzOpen(i){if(introOn)return;
+  if(!KZ.all){KZ.all=[];const seen=new Set();S.forEach((x,j)=>slideItems(x).forEach(it=>{if(!seen.has(it.src)){seen.add(it.src);it.si=j;KZ.all.push(it)}}))}
+  KZ.items=KZ.all;let st=KZ.items.findIndex(it=>it.si>=i);if(st<0)st=0;
+  KZ.play=false;document.getElementById('kzp').textContent='⏵';kzBuild();
+  const kz=document.getElementById('kz');kz.classList.add('on');kzFit();kzLand();kzSound();thumbPlay();requestAnimationFrame(()=>requestAnimationFrame(()=>kzShow(st)))}
+function kzFitText(f){const T=f.querySelector('.kT');if(!T||T._fit)return;T._fit=1;const ps=T.querySelectorAll('p'),h=T.querySelector('h3');let lo=16,hi=40;
+  for(let k=0;k<10;k++){const m=(lo+hi)/2;ps.forEach(p=>p.style.fontSize=m+'px');h.style.fontSize=Math.max(34,m*1.6)+'px';if(T.scrollHeight<=T.clientHeight+1)lo=m;else hi=m}
+  ps.forEach(p=>p.style.fontSize=lo+'px');h.style.fontSize=Math.max(34,lo*1.6)+'px'}
+let AC=null;
+function kzSound(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const t=AC.currentTime;
+  // whoosh
+  const len=AC.sampleRate*.7,buf=AC.createBuffer(1,len,AC.sampleRate),d=buf.getChannelData(0);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1);
+  const n=AC.createBufferSource();n.buffer=buf;const bp=AC.createBiquadFilter();bp.type='bandpass';bp.Q.value=1.2;bp.frequency.setValueAtTime(300,t);bp.frequency.exponentialRampToValueAtTime(3000,t+.35);bp.frequency.exponentialRampToValueAtTime(800,t+.7);
+  const g=AC.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.22,t+.15);g.gain.exponentialRampToValueAtTime(.001,t+.7);n.connect(bp);bp.connect(g);g.connect(AC.destination);n.start(t);n.stop(t+.72);
+  // sehrli qo‘ng‘iroqcha
+  [1046.5,1318.5,1568,2093].forEach((f,k)=>{const o=AC.createOscillator(),o2=AC.createOscillator(),gg=AC.createGain();o.type='sine';o2.type='sine';o.frequency.value=f;o2.frequency.value=f*2.01;
+    const st=t+.25+k*.08;gg.gain.setValueAtTime(0,st);gg.gain.linearRampToValueAtTime(.12,st+.01);gg.gain.exponentialRampToValueAtTime(.0008,st+1.2);
+    o.connect(gg);o2.connect(gg);gg.connect(AC.destination);o.start(st);o2.start(st);o.stop(st+1.25);o2.stop(st+1.25)})}catch(e){}}
+function kzStep(d){kzSound();kzShow(KZ.i+d)}
+function kzFit(){const k=Math.min(innerWidth/1920,innerHeight/1080);document.getElementById('kzs').style.transform=`translate(-50%,-50%) scale(${k})`}
+addEventListener('resize',()=>{if(kzOpenNow())kzFit()});
+async function kzLand(){try{const el=document.documentElement;if(!document.fullscreenElement&&el.requestFullscreen){await el.requestFullscreen({navigationUI:'hide'})}}catch(e){}
+  try{if(screen.orientation&&screen.orientation.lock){await screen.orientation.lock('landscape')}}catch(e){}setTimeout(kzFit,400)}
+function kzToggle(){KZ.play=!KZ.play;document.getElementById('kzp').textContent=KZ.play?'⏸':'▶';kzShow(KZ.i)}
+function kzClose(){clearTimeout(KZ.t);document.querySelectorAll('#kz video').forEach(v=>v.pause());document.getElementById('kz').classList.remove('on');try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock()}catch(e){}try{if(document.fullscreenElement&&!window._userFs)document.exitFullscreen().catch(()=>{})}catch(e){}}
+const kzOpenNow=()=>document.getElementById('kz').classList.contains('on');
+addEventListener('keydown',e=>{if(!kzOpenNow())return;e.stopImmediatePropagation();e.preventDefault();if(vOpen!==null){if(e.key==='Escape')closeV();return}
+  if(['ArrowRight','PageDown',' '].includes(e.key))kzStep(1);else if(['ArrowLeft','PageUp'].includes(e.key))kzStep(-1);else if(e.key==='Escape')kzClose()},true);
+let kx=null,ky=null,kmoved=false;
+addEventListener('touchstart',e=>{if(!kzOpenNow())return;kx=e.touches[0].clientX;ky=e.touches[0].clientY;kmoved=false},{passive:true,capture:true});
+addEventListener('touchend',e=>{if(!kzOpenNow()||kx===null||vOpen!==null)return;e.stopImmediatePropagation();const dx=e.changedTouches[0].clientX-kx,dy=e.changedTouches[0].clientY-ky;kx=null;
+  if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){kmoved=true;kzStep(dx<0?1:-1)}},{capture:true});
+let mx=null;document.getElementById('kz').addEventListener('mousedown',e=>{mx=e.clientX});
+document.getElementById('kz').addEventListener('click',e=>{if(e.target.closest('button,.kvid')||vOpen!==null)return;if(kmoved){kmoved=false;return}
+  if(mx!==null&&Math.abs(e.clientX-mx)>40){kzStep(e.clientX<mx?1:-1);mx=null;return}mx=null;kzStep(e.clientX<innerWidth/3?-1:1)});
+// slaydning bo'sh joyini bosganda ham ko'rgazma ochiladi
+document.getElementById('stage').addEventListener('click',e=>{if(introOn||vOpen!==null)return;if(e.target.closest('button,.vthumb,.an,.q,.rv,video,.frame,.card,.vtitle,.tl,.zoo,a,#intro'))return;kzOpen(cur)});
+
+function openFilm(b){VIDEOS[S.length]={src:'v/afrika_film.mp4',t:'Afrika haqida multfilm',d:''};openV(S.length,b)}
+function fitText(){document.querySelectorAll('.txt').forEach(el=>{let lo=22,hi=48;for(let k=0;k<12;k++){const m=(lo+hi)/2;el.style.fontSize=m+'px';if(el.scrollHeight<=el.clientHeight+1)lo=m;else hi=m}el.style.fontSize=lo.toFixed(1)+'px'})}
+fitText();addEventListener('load',fitText);
+
+document.body.classList.add('intro');S.forEach((s,j)=>s.classList.toggle('active',j===0));document.getElementById('count').textContent='1/'+S.length;setFx('gold');requestAnimationFrame(fxLoop);
+</script>
+<script>
+window.rbPlay=function(at,I){const B=document.getElementById('rbook'),W=document.getElementById('rbw');const L=[...B.querySelectorAll('.leaf')].reverse();
+  let t=1800;
+  L.forEach((lf,k)=>{at(t,()=>{if(k===0)B.classList.add('open');lf.classList.add('turned','flipping');try{pageSound(k===0)}catch(_){}setTimeout(()=>{lf.style.zIndex=10+k},1200);setTimeout(()=>lf.classList.remove('flipping'),2500)});t+=2400+2000});
+  at(t,()=>W.classList.add('small'));
+  at(t+1000,()=>I.classList.add('p4'));
+  at(t+3600,()=>{I.addEventListener('click',()=>endIntro())});
+};
+</script>
+<script>
+/* ===== ovoz: musiqa + varaq shitirlashi ===== */
+(function(){let A=null,M=null,rev=null;
+ function ac(){if(!A){A=new (window.AudioContext||window.webkitAudioContext)();M=A.createGain();M.gain.value=0;
+   const n=A.sampleRate*3,b=A.createBuffer(2,n,A.sampleRate);for(let ch=0;ch<2;ch++){const d=b.getChannelData(ch);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.5)}
+   rev=A.createConvolver();rev.buffer=b;const wet=A.createGain();wet.gain.value=.55;M.connect(A.destination);M.connect(rev);rev.connect(wet);wet.connect(A.destination)}
+  if(A.state==='suspended')A.resume();return A}
+ const CH=[[220,261.63,329.63],[174.61,220,261.63],[196,246.94,293.66],[164.81,207.65,246.94]];
+ let mt=null,on=false;
+ function pad(t,fr,dur){fr.forEach(f=>{[f,f*1.003].forEach((ff,j)=>{const o=A.createOscillator(),g=A.createGain(),lp=A.createBiquadFilter();o.type=j?'sine':'triangle';o.frequency.value=ff;lp.type='lowpass';lp.frequency.value=1400;
+   g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.05,t+1.6);g.gain.setValueAtTime(.05,t+dur-1.2);g.gain.linearRampToValueAtTime(0,t+dur+.4);o.connect(lp);lp.connect(g);g.connect(M);o.start(t);o.stop(t+dur+.5)})});
+   const b=A.createOscillator(),bg=A.createGain();b.type='sine';b.frequency.value=fr[0]/2;bg.gain.setValueAtTime(0,t);bg.gain.linearRampToValueAtTime(.09,t+1);bg.gain.linearRampToValueAtTime(0,t+dur+.3);b.connect(bg);bg.connect(M);b.start(t);b.stop(t+dur+.4)}
+ function bell(t,f,v){const o=A.createOscillator(),o2=A.createOscillator(),g=A.createGain();o.type='sine';o2.type='sine';o.frequency.value=f;o2.frequency.value=f*2.76;
+   g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0005,t+2.2);o.connect(g);o2.connect(g);g.connect(M);o.start(t);o2.start(t);o.stop(t+2.3);o2.stop(t+2.3)}
+ function bar(t,k){const c=CH[k%4],dur=4;pad(t,c,dur);const ar=[c[0]*2,c[1]*2,c[2]*2,c[1]*4,c[2]*2,c[1]*2];ar.forEach((f,i)=>bell(t+i*.66,f,.045))}
+ window.musicStart=function(){ac();if(on)return;on=true;M.gain.cancelScheduledValues(A.currentTime);M.gain.setValueAtTime(0,A.currentTime);M.gain.linearRampToValueAtTime(.9,A.currentTime+2);
+   let k=0,t0=A.currentTime+.1;const sch=()=>{if(!on)return;while(t0<A.currentTime+4.5){bar(t0,k++);t0+=4}mt=setTimeout(sch,1000)};sch()};
+ window.musicStop=function(){if(!A||!on)return;on=false;clearTimeout(mt);const t=A.currentTime;M.gain.cancelScheduledValues(t);M.gain.setValueAtTime(M.gain.value,t);M.gain.linearRampToValueAtTime(0,t+2.2)};
+ window.pageSound=function(heavy){ac();const t=A.currentTime,len=1.1,sr=A.sampleRate,n=Math.floor(sr*len),b=A.createBuffer(1,n,sr),d=b.getChannelData(0);
+   let cr=0;for(let i=0;i<n;i++){const x=i/n;if(Math.random()<.004)cr=1;cr*=.985;const env=Math.sin(Math.PI*Math.min(1,x*1.25))*(0.55+0.45*Math.sin(x*28+Math.random()));d[i]=(Math.random()*2-1)*(env*.6+cr*.9)*(x>.8?(1-x)*5:1)}
+   const s=A.createBufferSource();s.buffer=b;const hp=A.createBiquadFilter();hp.type='highpass';hp.frequency.value=heavy?500:900;const bp=A.createBiquadFilter();bp.type='peaking';bp.frequency.setValueAtTime(2500,t);bp.frequency.linearRampToValueAtTime(5000,t+.5);bp.frequency.linearRampToValueAtTime(1800,t+1);bp.gain.value=6;
+   const g=A.createGain();g.gain.value=heavy?.55:.42;s.connect(hp);hp.connect(bp);bp.connect(g);g.connect(A.destination);g.connect(rev);s.start(t);
+   const th=A.createOscillator(),tg=A.createGain();th.type='sine';th.frequency.setValueAtTime(heavy?110:150,t+.95);th.frequency.exponentialRampToValueAtTime(50,t+1.15);tg.gain.setValueAtTime(0,t+.95);tg.gain.linearRampToValueAtTime(heavy?.35:.18,t+.97);tg.gain.exponentialRampToValueAtTime(.001,t+1.2);th.connect(tg);tg.connect(A.destination);th.start(t+.95);th.stop(t+1.25)};
+ const gate=document.getElementById('gate');
+ if(gate)gate.addEventListener('click',e=>{e.stopPropagation();try{musicStart()}catch(_){}document.body.classList.remove('gate');gate.remove();window._go0=true;(window._q||[]).forEach(([ms,f])=>window._at(ms,f));window._q=[]});
+ const _end=window.endIntro;window.endIntro=function(){try{musicStop()}catch(_){}return _end.apply(this,arguments)};
+})();
+</script>
+<script>
+/* GitHub Pages: v/ papkasida yo'q videolarni jim yashirish */
+(function(){function chk(src){return fetch(src,{method:'HEAD'}).then(r=>r.ok).catch(()=>false)}
+ S.forEach((sl,i)=>{const v=VIDEOS[i];if(!v)return;chk(v.src).then(ok=>{if(ok)return;VIDEOS[i]=null;const t=sl.querySelector('.vthumb');if(t)t.remove()})});
+ chk('v/afrika_film.mp4').then(ok=>{if(!ok)document.querySelectorAll('.filmbtn').forEach(b=>b.style.display='none')});
+})();
+</script>
 </body>
 </html>
