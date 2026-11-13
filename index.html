@@ -940,8 +940,6 @@ function initThumbs(){S.forEach((sl,i)=>{const v=VIDEOS[i];if(!v)return;const bo
 function thumbPlay(){S.forEach((sl,j)=>{const tv=sl.querySelector('.vthumb video');if(!tv)return;if(j===cur&&vOpen===null&&!introOn){tv.play().catch(()=>{})}else tv.pause()})}
 function fullStyle(){const W=innerWidth,H=innerHeight;return {left:'0px',top:'0px',width:W+'px',height:H+'px',transform:'none'}}
 async function goLandscape(){
-  try{const el=document.documentElement;if(!document.fullscreenElement&&el.requestFullscreen){await el.requestFullscreen({navigationUI:'hide'})}}catch(e){}
-  try{if(screen.orientation&&screen.orientation.lock){await screen.orientation.lock('landscape')}}catch(e){}
   setTimeout(()=>{if(vOpen!==null){Object.assign(document.getElementById('vx').style,fullStyle())}},350)}
 function openV(i,th){window._vth=th;const v=VIDEOS[i],vx=document.getElementById('vx'),m=document.getElementById('vxmedia'),r=th.getBoundingClientRect();
   vOpen=i;Object.assign(vx.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',transform:'none'});vx.className='show';
@@ -954,8 +952,6 @@ addEventListener('resize',()=>{if(vOpen!==null){const vx=document.getElementById
 function closeV(){if(vOpen===null)return;const vx=document.getElementById('vx'),th=(window._vth&&window._vth.isConnected&&window._vth.getBoundingClientRect().width?window._vth:S[vOpen].querySelector('.vthumb')),r=th.getBoundingClientRect();
   const vid=vx.querySelector('video');if(vid)vid.pause();
   vx.classList.remove('full');Object.assign(vx.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',transform:'none'});
-  try{if(screen.orientation&&screen.orientation.unlock)screen.orientation.unlock()}catch(e){}
-  try{if(document.fullscreenElement&&!window._userFs)document.exitFullscreen().catch(()=>{})}catch(e){}
   document.getElementById('vxdim').classList.remove('on');vOpen=null;thumbPlay();setTimeout(()=>{if(vOpen===null){vx.className='';document.getElementById('vxmedia').innerHTML=''}},760)}
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeV();closeLB()}if((e.key==='v'||e.key==='V')&&vOpen===null&&VIDEOS[cur]&&!introOn){openV(cur,S[cur].querySelector('.vthumb'))}},true);
 
